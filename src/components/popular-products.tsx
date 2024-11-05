@@ -25,7 +25,7 @@ const popularProducts = [
   {
     id: 4,
     name: "Керамогранит Wood Style",
-    price: 1499,
+    price: 14990,
     image: "/placeholder.svg",
   },
 ]
