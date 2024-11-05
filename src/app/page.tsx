@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
 import FeaturesSection from '@/components/ui/features-section';
+import BrandsSection from '@/components/brands-section';
 
 export default function HomePage() {
  return (
@@ -52,6 +53,7 @@ export default function HomePage() {
        </section>
 
        <FeaturesSection />
+       <BrandsSection />
 
        <PopularProducts />
 
@@ -92,6 +94,8 @@ export default function HomePage() {
            </div>
          </div>
        </section>
+
+       
 
        <CustomerReviews />
        <ImprovedContactForm />
