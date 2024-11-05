@@ -25,7 +25,7 @@ export default function HomePage() {
               </div>
               <div className="space-x-4">
                 <Button className="bg-white text-black hover:bg-gray-200">Посмотреть каталог</Button>
-                <Button variant="outline" className="text-white border-white hover:bg-white hover:text-black">
+                <Button variant="outline" className="text-black border-white hover:bg-white hover:text-black">
                   Связаться с нами
                 </Button>
               </div>
