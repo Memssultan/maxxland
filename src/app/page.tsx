@@ -52,13 +52,6 @@ export default function HomePage() {
                 <Button className="bg-white text-black hover:bg-gray-200">
                   Посмотреть каталог
                 </Button>
-                <Button 
-                  variant="outline" 
-                  className="text-white border-white hover:bg-white hover:text-black"
-                  onClick={scrollToContacts}
-                >
-                  Связаться с нами
-                </Button>
               </div>
             </div>
           </div>

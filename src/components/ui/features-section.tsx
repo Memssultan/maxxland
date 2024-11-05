@@ -1,5 +1,6 @@
 import React from 'react';
 import { Briefcase, Package, Umbrella, Coffee, Home, LucideIcon } from 'lucide-react';
+import { Card, CardContent } from "@/components/ui/card"
 
 interface FeatureCardProps {
   icon: LucideIcon;
@@ -8,13 +9,15 @@ interface FeatureCardProps {
 }
 
 const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, description }) => (
-  <div className="flex flex-col items-center text-center p-4 space-y-3">
-    <div className="text-red-600">
-      <Icon size={24} />
-    </div>
-    <h3 className="font-bold text-lg">{title}</h3>
-    <p className="text-gray-600 text-sm font-bold">{description}</p>
-  </div>
+  <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+    <CardContent className="flex flex-col items-center text-center p-6 space-y-4">
+      <div className="bg-primary/10 p-3 rounded-full">
+        <Icon size={24} className="text-primary" />
+      </div>
+      <h3 className="font-bold text-lg text-primary">{title}</h3>
+      <p className="text-muted-foreground">{description}</p>
+    </CardContent>
+  </Card>
 );
 
 const FeaturesSection: React.FC = () => {
@@ -46,10 +49,14 @@ const FeaturesSection: React.FC = () => {
     }
   ];
 
-  return (
-    <section className="py-12 px-4 bg-gray-50">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+  // feature-section.tsx
+return (
+    <section className="py-16 px-4 bg-background">
+      <div className="container mx-auto"> {/* Заменили max-w-7xl на container для консистентности */}
+        <div className="flex flex-col items-center mb-12"> {/* Обертка для заголовка */}
+          <h2 className="text-3xl font-bold text-center text-primary">Наши преимущества</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <FeatureCard
               key={index}
@@ -61,7 +68,7 @@ const FeaturesSection: React.FC = () => {
         </div>
       </div>
     </section>
-  );
+);
 };
 
 export default FeaturesSection;
