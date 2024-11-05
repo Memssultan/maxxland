@@ -40,11 +40,18 @@ export function ImprovedNavigation() {
     }
   }
 
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById('about')
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <header className="px-4 lg:px-6 h-14 flex items-center">
       <Link href="/" className="flex items-center justify-center mr-6">
         <MountainIcon className="h-6 w-6 mr-2" />
-        <span className="font-bold text-xl">Керамика и Мебель</span>
+        <span className="font-bold text-xl">MaxxFine</span>
       </Link>
       <NavigationMenu>
         <NavigationMenuList>
@@ -71,9 +78,9 @@ export function ImprovedNavigation() {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href="/about" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>О нас</NavigationMenuLink>
-            </Link>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()} onClick={scrollToAbout}>
+              О нас
+            </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink className={navigationMenuTriggerStyle()} onClick={scrollToContacts}>

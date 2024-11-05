@@ -5,11 +5,12 @@ import { ImprovedNavigation } from "@/components/improved-navigation"
 import { PopularProducts } from "@/components/popular-products"
 import { CustomerReviews } from "@/components/customer-reviews"
 import { Button } from "@/components/ui/button"
-import { ContactSection } from "@/app/contact/page"
+import { AboutSection } from "@/components/about-section"
 import Image from "next/image"
 import Link from "next/link"
 import FeaturesSection from '@/components/ui/features-section'
 import BrandsSection from '@/components/brands-section'
+import ContactSection from '@/components/contact-section'
 
 export default function HomePage() {
   const scrollToContacts = () => {
@@ -24,6 +25,7 @@ export default function HomePage() {
       <ImprovedNavigation />
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 relative overflow-hidden">
+          {/* Hero section остается без изменений */}
           <video
             autoPlay
             muted
@@ -63,6 +65,7 @@ export default function HomePage() {
         </section>
 
         <FeaturesSection />
+        <AboutSection /> 
         <BrandsSection />
         <PopularProducts />
 
