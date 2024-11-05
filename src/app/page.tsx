@@ -1,7 +1,8 @@
+'use client'
+
 import * as React from "react"
 import { ImprovedNavigation } from "@/components/improved-navigation"
 import { PopularProducts } from "@/components/popular-products"
-import { ImprovedContactForm } from "@/components/improved-contact-form"
 import { CustomerReviews } from "@/components/customer-reviews"
 import { Button } from "@/components/ui/button"
 import { ContactSection } from "@/app/contact/page"
@@ -9,6 +10,13 @@ import Image from "next/image"
 import Link from "next/link"
 
 export default function HomePage() {
+  const scrollToContacts = () => {
+    const contactsSection = document.getElementById('contacts')
+    if (contactsSection) {
+      contactsSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <div className="flex flex-col min-h-screen">
       <ImprovedNavigation />
@@ -40,7 +48,11 @@ export default function HomePage() {
                 <Button className="bg-white text-black hover:bg-gray-200">
                   Посмотреть каталог
                 </Button>
-                <Button variant="outline" className="text-white border-white hover:bg-white hover:text-black">
+                <Button 
+                  variant="outline" 
+                  className="text-white border-white hover:bg-white hover:text-black"
+                  onClick={scrollToContacts}
+                >
                   Связаться с нами
                 </Button>
               </div>
@@ -52,13 +64,12 @@ export default function HomePage() {
 
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
           {/* Оставшаяся часть кода остается без изменений */}
-          {/* ... */}
         </section>
 
         <CustomerReviews />
         
-        {/* Заменяем ImprovedContactForm на полную секцию контактов */}
         <ContactSection />
+
       </main>
       <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
         <p className="text-xs text-gray-500">© 2024 Керамика и Мебель. Все права защищены.</p>
