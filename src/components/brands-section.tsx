@@ -3,6 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { ArrowRight } from 'lucide-react';
 
 const BrandsSection: React.FC = () => {
   const brands = [
@@ -39,46 +41,43 @@ const BrandsSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
-          <div>
-            <h2 className="text-4xl font-bold mb-4">Наши бренды</h2>
-            <p className="text-gray-600 max-w-2xl">
+          <div className="max-w-2xl">
+            <h2 className="text-3xl font-bold mb-4 text-primary">Наши бренды</h2>
+            <p className="text-muted-foreground">
               Мы тщательно отбираем производителей, чтобы предложить вам лучшее соотношение цены и качества. 
               Работаем напрямую с фабриками, что гарантирует подлинность продукции и лучшие цены.
             </p>
           </div>
-          <Link 
-            href="/brands" 
-            className="mt-4 md:mt-0 inline-flex items-center text-red-600 hover:text-red-700 font-medium"
-          >
-            Смотреть все бренды
-            <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </Link>
+          <Button variant="outline" asChild className="mt-4 md:mt-0">
+            <Link href="/brands">
+              Смотреть все бренды
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {brands.map((brand, index) => (
-            <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-0">
+            <Card key={index} className="group hover:shadow-lg transition-all duration-300">
               <CardContent className="p-6">
-                <div className="relative w-full h-24 mb-4">
+                <div className="relative w-full h-24 mb-4 bg-white rounded-md overflow-hidden">
                   <Image
                     src={brand.logo}
                     alt={brand.name}
                     fill
-                    className="object-contain filter group-hover:brightness-110 transition-all"
+                    className="object-contain p-2 filter group-hover:brightness-110 transition-all"
                   />
                 </div>
                 <div className="space-y-2">
-                  <h3 className="font-semibold text-lg">{brand.name}</h3>
+                  <h3 className="font-semibold text-lg text-primary">{brand.name}</h3>
                   <div className="flex flex-wrap gap-2">
-                    <Badge variant="secondary" className="bg-gray-100">
+                    <Badge variant="secondary">
                       {brand.category}
                     </Badge>
-                    <Badge variant="outline" className="text-gray-500">
+                    <Badge variant="outline">
                       {brand.country}
                     </Badge>
                   </div>
