@@ -1,3 +1,5 @@
+'use client'
+
 import * as React from "react"
 import Link from "next/link"
 import { MountainIcon } from "lucide-react"
@@ -31,6 +33,13 @@ const categories = [
 ]
 
 export function ImprovedNavigation() {
+  const scrollToContacts = () => {
+    const contactsSection = document.getElementById('contacts')
+    if (contactsSection) {
+      contactsSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <header className="px-4 lg:px-6 h-14 flex items-center">
       <Link href="/" className="flex items-center justify-center mr-6">
@@ -67,9 +76,9 @@ export function ImprovedNavigation() {
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href="/contact" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>Контакты</NavigationMenuLink>
-            </Link>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()} onClick={scrollToContacts}>
+              Контакты
+            </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>

@@ -4,6 +4,7 @@ import { PopularProducts } from "@/components/popular-products"
 import { ImprovedContactForm } from "@/components/improved-contact-form"
 import { CustomerReviews } from "@/components/customer-reviews"
 import { Button } from "@/components/ui/button"
+import { ContactSection } from "@/app/contact/page"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -55,7 +56,9 @@ export default function HomePage() {
         </section>
 
         <CustomerReviews />
-        <ImprovedContactForm />
+        
+        {/* Заменяем ImprovedContactForm на полную секцию контактов */}
+        <ContactSection />
       </main>
       <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
         <p className="text-xs text-gray-500">© 2024 Керамика и Мебель. Все права защищены.</p>
