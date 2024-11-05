@@ -1,17 +1,19 @@
-import { ImprovedNavigation } from "@/components/improved-navigation"
-import { ImprovedContactForm } from "@/components/improved-contact-form"
-import Link from "next/link"
-import { MapPin, Phone, Mail } from "lucide-react"
+'use client'
 
-// В файле /app/contact/page.tsx переименуйте его в ContactSection:
+import React from 'react'
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+
 export function ContactSection() {
   return (
-    <section id="contacts" className="w-full py-12 md:py-24 lg:py-32">
-      <div className="container px-4 md:px-6">
+    <section className="w-full py-12 md:py-24 lg:py-32 bg-white" id="contacts">
+       <div className="container mx-auto px-4">
+       <h2 className="text-4xl font-bold mb-6">Контакты</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Левая колонка с контактной информацией */}
+            
           <div>
-            <h2 className="text-3xl font-bold mb-6">Контакты</h2>
             <p className="mb-6">
               Мы всегда рады ответить на ваши вопросы и помочь с выбором продукции. Свяжитесь с нами любым удобным способом:
             </p>
@@ -44,7 +46,24 @@ export function ContactSection() {
             <p className="text-gray-600 mb-6">
               У вас есть вопросы? Оставьте свои контактные данные, и мы свяжемся с вами в ближайшее время.
             </p>
-            <ImprovedContactForm />
+            <form className="grid gap-4">
+              <Input placeholder="Имя" type="text" required />
+              <Input placeholder="Email" type="email" required />
+              <Input placeholder="Телефон" type="tel" />
+              <Select required>
+                <SelectTrigger>
+                  <SelectValue placeholder="Выберите тему обращения" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="general">Общий вопрос</SelectItem>
+                  <SelectItem value="order">Вопрос по заказу</SelectItem>
+                  <SelectItem value="product">Вопрос по товару</SelectItem>
+                  <SelectItem value="complaint">Жалоба</SelectItem>
+                </SelectContent>
+              </Select>
+              <Textarea placeholder="Сообщение" required />
+              <Button type="submit" className="w-full">Отправить</Button>
+            </form>
           </div>
         </div>
       </div>
@@ -52,11 +71,9 @@ export function ContactSection() {
   )
 }
 
-// Также оставьте страницу для прямого доступа
 export default function ContactPage() {
   return (
     <div className="flex flex-col min-h-screen">
-      <ImprovedNavigation />
       <main className="flex-1">
         <ContactSection />
       </main>

@@ -6,27 +6,23 @@ import { Button } from "@/components/ui/button"
 const popularProducts = [
   {
     id: 1,
-    name: "Керамогранит Marmo Classic",
-    price: 1299,
-    image: "/placeholder.svg",
+    name: "Керамогранит Petra Crema abujardado",
+    image: "/logos/p1.png",
   },
   {
     id: 2,
-    name: "Тумба для ванной Aqua Lux",
-    price: 15999,
-    image: "/placeholder.svg",
+    name: "Керамогранит Atalaia Super Blanco DT",
+    image: "/logos/p2.png",
   },
   {
     id: 3,
-    name: "Кухонный гарнитур Modern",
-    price: 89999,
-    image: "/placeholder.svg",
+    name: "Безободковый унитаз Antonio Lupi Komodo",
+    image: "/logos/p3.png",
   },
   {
     id: 4,
-    name: "Керамогранит Wood Style",
-    price: 14990,
-    image: "/placeholder.svg",
+    name: "Смесители Zuchetti Pan S",
+    image: "/logos/p4.png",
   },
 ]
 

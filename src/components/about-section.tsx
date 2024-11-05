@@ -4,7 +4,7 @@ import React from 'react'
 
 export function AboutSection() {
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
+    <section className="w-full py-12 md:py-24 lg:py-32 bg-white" id="about">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold mb-6">О нас</h2>
         <div className="grid md:grid-cols-2 gap-12 items-center">
