@@ -49,8 +49,6 @@ export function PopularProducts() {
               </CardContent>
               <CardFooter className="flex flex-col items-start p-4">
                 <h3 className="font-semibold text-lg mb-2">{product.name}</h3>
-                <p className="text-gray-600 mb-4">{product.price} ₽</p>
-                <Button className="w-full">Добавить в корзину</Button>
               </CardFooter>
             </Card>
           ))}
