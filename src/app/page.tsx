@@ -24,7 +24,7 @@ export default function HomePage() {
     <div className="flex flex-col min-h-screen">
       <ImprovedNavigation />
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 relative overflow-hidden">
+        <section className="w-full py-8 md:py-16 lg:py-24 xl:py-40 relative overflow-hidden">
           {/* Hero section остается без изменений */}
           <video
             autoPlay
