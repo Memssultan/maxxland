@@ -1,10 +1,18 @@
+// improved-contact-form.tsx
+'use client'
+
 import * as React from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { ArrowUpDown } from "lucide-react"
 
-export function ImprovedContactForm() {
+interface ImprovedContactFormProps {
+  onToggleView?: () => void;
+}
+
+export function ImprovedContactForm({ onToggleView }: ImprovedContactFormProps) {
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
       <div className="container px-4 md:px-6">
@@ -33,7 +41,19 @@ export function ImprovedContactForm() {
               </SelectContent>
             </Select>
             <Textarea placeholder="Сообщение" required />
-            <Button type="submit" className="w-full">Отправить</Button>
+            <div className="space-y-2">
+              <Button type="submit" className="w-full">Отправить</Button>
+              {onToggleView && (
+                <Button 
+                  variant="outline" 
+                  type="button"
+                  className="w-full flex items-center justify-center gap-2"
+                  onClick={onToggleView}
+                >
+                  <ArrowUpDown className="h-4 w-4" /> Показать расширенную форму
+                </Button>
+              )}
+            </div>
           </form>
         </div>
       </div>

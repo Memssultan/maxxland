@@ -1,9 +1,5 @@
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { ArrowRight } from 'lucide-react';
 
 const BrandsSection: React.FC = () => {
  const brands = [
@@ -38,12 +34,6 @@ const BrandsSection: React.FC = () => {
            Мы тщательно отбираем производителей, чтобы предложить вам лучшее соотношение цены и качества. 
            Работаем напрямую с фабриками, что гарантирует подлинность продукции и лучшие цены.
          </p>
-         <Button variant="outline" asChild className="mt-6">
-           <Link href="/brands">
-             Смотреть все бренды
-             <ArrowRight className="ml-2 h-4 w-4" />
-           </Link>
-         </Button>
        </div>
 
        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
