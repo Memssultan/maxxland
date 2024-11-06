@@ -39,7 +39,14 @@ export default function HomePage() {
           <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-10"></div>
           
           <div className="container px-4 md:px-6 relative z-20">
-            <div className="flex flex-col items-center space-y-4 text-center">
+           <div className="flex flex-col items-center space-y-1 text-center">
+            <Image
+             src="/logo.svg" // Укажите правильный путь к вашему логотипу
+             alt="Логотип компании"
+             width={200} // Настройте размер под ваш логотип
+             height={100}
+             className="mb-[-11rem]" // Добавляем отступ снизу
+             />
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-white">
                   Керамогранит и мебель для вашего дома
