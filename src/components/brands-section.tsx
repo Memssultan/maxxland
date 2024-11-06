@@ -2,41 +2,30 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Badge } from "@/components/ui/badge"
-import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from 'lucide-react';
 
 const BrandsSection: React.FC = () => {
  const brands = [
    { 
-     name: 'KERAMA MARAZZI', 
-     logo: '/brands/kerama.png',
-     category: 'Керамогранит',
-     country: 'Россия' 
+     logo: '/logos/devon.jpg', 
+     url: 'https://www.devon-devon.com/eu/'
+   }, 
+   {  
+     logo: '/logos/fantini.png', 
+     url: 'https://www.fantini.it/ru-ww'
+   }, 
+   { 
+     logo: '/logos/cielo.jpg',
+     url: 'https://www.ceramicacielo.it/ru',
    },
    { 
-     name: 'LAPARET', 
-     logo: '/brands/laparet.png',
-     category: 'Керамогранит',
-     country: 'Россия'
+     logo: '/logos/fmg.png',
+     url: 'https://www.irisfmg.com/'
    },
    { 
-     name: 'GESSI', 
-     logo: '/brands/gessi.png',
-     category: 'Сантехника',
-     country: 'Италия'
-   },
-   { 
-     name: 'MARAZZI', 
-     logo: '/brands/marazzi.png',
-     category: 'Керамогранит',
-     country: 'Италия'
-   },
-   { 
-     name: 'GARDENIA', 
-     logo: '/brands/gardenia.png',
-     category: 'Керамогранит',
-     country: 'Италия'
+     logo: '/logos/bertocci.png',
+     url: 'https://www.bertocci.it/'
    }
  ];
 
@@ -59,29 +48,23 @@ const BrandsSection: React.FC = () => {
 
        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
          {brands.map((brand, index) => (
-           <Card key={index} className="group hover:shadow-lg transition-all duration-300">
-             <CardContent className="p-6">
-               <div className="relative w-full h-24 mb-4 bg-white rounded-md overflow-hidden">
+           <div key={index} className="p-6">
+             <a 
+               href={brand.url} 
+               target="_blank" 
+               rel="noopener noreferrer"
+               className="block cursor-pointer transform transition-transform hover:-translate-y-1 active:translate-y-0"
+             >
+               <div className="relative w-full h-24">
                  <Image
                    src={brand.logo}
-                   alt={brand.name}
+                   alt="Brand logo"
                    fill
-                   className="object-contain p-2 filter group-hover:brightness-110 transition-all"
+                   className="object-contain"
                  />
                </div>
-               <div className="space-y-2">
-                 <h3 className="font-semibold text-lg text-primary">{brand.name}</h3>
-                 <div className="flex flex-wrap gap-2">
-                   <Badge variant="secondary">
-                     {brand.category}
-                   </Badge>
-                   <Badge variant="outline">
-                     {brand.country}
-                   </Badge>
-                 </div>
-               </div>
-             </CardContent>
-           </Card>
+             </a>
+           </div>
          ))}
        </div>
      </div>
