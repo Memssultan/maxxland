@@ -30,11 +30,11 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, descriptio
           >
             <Icon size={24} className="text-primary" />
           </motion.div>
-          <h3 className="font-bold text-lg text-primary">{title}</h3>
+          <h3 className="font-bold text-lg text-red-700">{title}</h3>
           <p className="text-muted-foreground flex-grow">{description}</p>
           <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
-              <Button variant="outline" className="mt-4">
+              <Button variant="outline" className="text-red-700 mt-4">
                 Подробнее <ChevronRight className="ml-2 h-4 w-4" />
               </Button>
             </DialogTrigger>
@@ -102,7 +102,7 @@ const FeaturesSection: React.FC = () => {
           className="flex flex-col items-center mb-12"
         >
           <h2 className="text-4xl font-bold text-center text-primary mb-4">Наши преимущества</h2>
-          <div className="w-24 h-1 bg-primary rounded mb-8"></div>
+          <div className="w-24 h-1 bg-red-700 rounded mb-8"></div>
           <Input
             type="text"
             placeholder="Поиск преимуществ..."
