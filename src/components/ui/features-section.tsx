@@ -1,74 +1,139 @@
-import React from 'react';
-import { Briefcase, Package, Umbrella, Coffee, Home, LucideIcon } from 'lucide-react';
-import { Card, CardContent } from "@/components/ui/card"
+import React, { useState } from 'react';
+import { Briefcase, Package, Umbrella, Coffee, Home, LucideIcon, ChevronRight } from 'lucide-react';
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface FeatureCardProps {
   icon: LucideIcon;
   title: string;
   description: string;
+  details: string;
 }
 
-const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, description }) => (
-  <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-    <CardContent className="flex flex-col items-center text-center p-6 space-y-4">
-      <div className="bg-primary/10 p-3 rounded-full">
-        <Icon size={24} className="text-primary" />
-      </div>
-      <h3 className="font-bold text-lg text-primary">{title}</h3>
-      <p className="text-muted-foreground">{description}</p>
-    </CardContent>
-  </Card>
-);
+const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, description, details }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      <Card className="h-full transition-all duration-300 hover:shadow-lg">
+        <CardContent className="flex flex-col items-center text-center p-6 space-y-4 h-full">
+          <motion.div 
+            className="bg-primary/10 p-3 rounded-full"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          >
+            <Icon size={24} className="text-primary" />
+          </motion.div>
+          <h3 className="font-bold text-lg text-primary">{title}</h3>
+          <p className="text-muted-foreground flex-grow">{description}</p>
+          <Dialog open={isOpen} onOpenChange={setIsOpen}>
+            <DialogTrigger asChild>
+              <Button variant="outline" className="mt-4">
+                Подробнее <ChevronRight className="ml-2 h-4 w-4" />
+              </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>{title}</DialogTitle>
+              </DialogHeader>
+              <p>{details}</p>
+            </DialogContent>
+          </Dialog>
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+};
 
 const FeaturesSection: React.FC = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+
   const features: FeatureCardProps[] = [
     {
       icon: Briefcase,
       title: "Официальные представители",
-      description: "У нас представлено более 300 мировых брендов сантехники"
+      description: "У нас представлено более 300 мировых брендов сантехники",
+      details: "Мы являемся официальными представителями ведущих мировых производителей сантехники. Это гарантирует подлинность товаров, лучшие цены и полную поддержку производителя."
     },
     {
       icon: Package,
       title: "Большая экспозиция",
-      description: "Самые крупные выставки брендов Ideal Stansard, Simas, Salini, Hansgrohe, The Artceram, Tece"
+      description: "Самые крупные выставки брендов Ideal Standard, Simas, Salini, Hansgrohe, The Artceram, Tece",
+      details: "Наша экспозиция позволяет вам увидеть и потрогать продукцию перед покупкой. Мы регулярно обновляем выставочные образцы, чтобы показать последние новинки и тренды в мире сантехники."
     },
     {
       icon: Umbrella,
       title: "Высокая экспертность команды",
-      description: "100% ответственность за комплектацию заказа. У нас вы соберете заказ даже если комплектующие разных брендов"
+      description: "100% ответственность за комплектацию заказа. У нас вы соберете заказ даже если комплектующие разных брендов",
+      details: "Наши специалисты имеют многолетний опыт работы в сфере сантехники. Мы поможем вам подобрать оптимальное решение, учитывая ваши потребности и бюджет, и гарантируем полную совместимость всех компонентов."
     },
     {
       icon: Coffee,
       title: "Выгодное сотрудничество",
-      description: "Персональные предложения для дизайнеров интерьера, архитекторов, декораторов"
+      description: "Персональные предложения для дизайнеров интерьера, архитекторов, декораторов",
+      details: "Мы ценим профессионалов и предлагаем специальные условия сотрудничества для дизайнеров и архитекторов. Это включает в себя эксклюзивные скидки, приоритетное обслуживание и доступ к обучающим материалам."
     },
     {
       icon: Home,
       title: "Собственный склад",
-      description: "Храним ваши товары БЕСПЛАТНО на собственном складе"
+      description: "Храним ваши товары БЕСПЛАТНО на собственном складе",
+      details: "Наш склад оборудован всем необходимым для правильного хранения сантехники. Мы берем на себя все заботы о сохранности вашего заказа до момента доставки, и все это совершенно бесплатно."
     }
   ];
 
-  // feature-section.tsx
-return (
-    <section className="py-16 px-4 bg-background">
-      <div className="container mx-auto"> {/* Заменили max-w-7xl на container для консистентности */}
-        <div className="flex flex-col items-center mb-12"> {/* Обертка для заголовка */}
-          <h2 className="text-3xl font-bold text-center text-primary">Наши преимущества</h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <FeatureCard
-              key={index}
-              icon={feature.icon}
-              title={feature.title}
-              description={feature.description}
-            />
-          ))}
-        </div>
+  const filteredFeatures = features.filter(feature => 
+    feature.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    feature.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  return (
+    <section className="py-16 px-4 bg-gradient-to-b from-background to-primary/5">
+      <div className="container mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col items-center mb-12"
+        >
+          <h2 className="text-4xl font-bold text-center text-primary mb-4">Наши преимущества</h2>
+          <div className="w-24 h-1 bg-primary rounded mb-8"></div>
+          <Input
+            type="text"
+            placeholder="Поиск преимуществ..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="max-w-md w-full"
+          />
+        </motion.div>
+        <AnimatePresence>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredFeatures.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <FeatureCard
+                  icon={feature.icon}
+                  title={feature.title}
+                  description={feature.description}
+                  details={feature.details}
+                />
+              </motion.div>
+            ))}
+          </div>
+        </AnimatePresence>
       </div>
     </section>
-);
+  );
 };
 
 export default FeaturesSection;
