@@ -9,17 +9,27 @@ export function AboutSection() {
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-gray-50 to-white" id="about">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold mb-8 text-center">О компании MaxxFine</h2>
+        <h2 className="text-4xl font-bold mb-8 text-center text-red-700">О компании MaxxFine</h2>
         <Tabs defaultValue="about" className="w-full max-w-4xl mx-auto">
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="about">О нас</TabsTrigger>
-            <TabsTrigger value="why">Почему мы</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-2 text-red-700">
+            <TabsTrigger 
+              value="about"
+              className="data-[state=active]:bg-red-700 data-[state=active]:text-white"
+            >
+              О нас
+            </TabsTrigger>
+            <TabsTrigger 
+              value="why"
+              className="data-[state=active]:bg-red-700 data-[state=active]:text-white"
+            >
+              Почему мы
+            </TabsTrigger>
           </TabsList>
           <TabsContent value="about">
             <Card>
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
-                  <Building className="h-6 w-6 text-primary mt-1" />
+                  <Building className="h-6 w-6 text-gray-900 mt-1" />
                   <div>
                     <h3 className="text-xl font-semibold mb-4">Наша компания</h3>
                     <p className="text-lg mb-4">
@@ -29,7 +39,7 @@ export function AboutSection() {
                   </div>
                 </div>
                 <div className="flex items-start space-x-4 mt-6">
-                  <Users className="h-6 w-6 text-primary mt-1" />
+                  <Users className="h-6 w-6 text-gray-900 mt-1" />
                   <div>
                     <h3 className="text-xl font-semibold mb-4">Наша миссия</h3>
                     <p className="text-lg">
@@ -54,7 +64,7 @@ export function AboutSection() {
                     "Удобная доставка и установка"
                   ].map((item, index) => (
                     <li key={index} className="flex items-center space-x-3">
-                      <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
+                      <CheckCircle className="h-5 w-5 text-gray-900 flex-shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}

@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
   	extend: {
   		container: {
-  			center: 'true'
+  			center: true
   		},
   		backgroundImage: {
   			'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
