@@ -6,32 +6,12 @@ import { MountainIcon, Menu, X } from "lucide-react"
 
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { Button } from "@/components/ui/button"
-
-const categories = [
-  {
-    title: "Керамогранит",
-    href: "/ceramics",
-    description: "Широкий выбор керамогранита для пола и стен",
-  },
-  {
-    title: "Мебель для ванной",
-    href: "/bathroom-furniture",
-    description: "Стильная и функциональная мебель для вашей ванной комнаты",
-  },
-  {
-    title: "Кухонная мебель",
-    href: "/kitchen-furniture",
-    description: "Современная мебель для вашей кухни",
-  },
-]
 
 export function ImprovedNavigation() {
   const [isOpen, setIsOpen] = React.useState(false)
@@ -61,38 +41,35 @@ export function ImprovedNavigation() {
   }
 
   return (
-    <header className="px-4 lg:px-6 h-14 flex items-center justify-between">
+    <header className="px-4 lg:px-6 h-14 flex items-center justify-between relative">
       <Link href="/" className="flex items-center justify-center">
         <MountainIcon className="h-6 w-6 mr-2" />
         <span className="font-bold text-xl">MaxxFine</span>
       </Link>
 
-      <NavigationMenu className={`${isOpen ? 'flex' : 'hidden'} lg:flex absolute top-14 left-0 w-full bg-white lg:relative lg:top-0 lg:w-auto`}>
-        <NavigationMenuList className="flex-col lg:flex-row">
-          <NavigationMenuItem>
-            <NavigationMenuContent>
-              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                {categories.map((category) => (
-                  <li key={category.title}>
-                    <NavigationMenuLink asChild>
-                      <a
-                        href={category.href}
-                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                      >
-                        <div className="text-sm font-medium leading-none">{category.title}</div>
-                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                          {category.description}
-                        </p>
-                      </a>
-                    </NavigationMenuLink>
-                  </li>
-                ))}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
+      {/* Desktop Navigation */}
+      <div className="hidden lg:block">
+        <NavigationMenu>
+          <NavigationMenuList className="flex items-center gap-2">
+            <NavigationMenuItem>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()} onClick={scrollToAbout}>
+                О нас
+              </NavigationMenuLink>
+            </NavigationMenuItem>
 
-          {/* Social Media Buttons - Desktop */}
-          <div className="hidden lg:flex gap-2">
+            <NavigationMenuItem>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()} onClick={scrollToBrands}>
+                Бренды
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+
+            <NavigationMenuItem>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()} onClick={scrollToContacts}>
+                Контакты
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+
+            {/* Desktop Social Media */}
             <NavigationMenuItem>
               <Link 
                 href="https://wa.me/77717689949" 
@@ -122,38 +99,48 @@ export function ImprovedNavigation() {
                 </Button>
               </Link>
             </NavigationMenuItem>
-          </div>
+          </NavigationMenuList>
+        </NavigationMenu>
+      </div>
 
-          <NavigationMenuItem>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()} onClick={scrollToAbout}>
+      {/* Mobile Navigation */}
+      {isOpen && (
+        <div className="lg:hidden absolute top-14 left-0 w-full bg-white shadow-lg z-50">
+          <nav className="flex flex-col p-4">
+            {/* Mobile Menu Items */}
+            <button
+              className="py-2 text-left hover:bg-gray-100 rounded-md px-3"
+              onClick={scrollToAbout}
+            >
               О нас
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-
-          <NavigationMenuItem>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()} onClick={scrollToBrands}>
+            </button>
+            
+            <button
+              className="py-2 text-left hover:bg-gray-100 rounded-md px-3"
+              onClick={scrollToBrands}
+            >
               Бренды
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-
-          <NavigationMenuItem>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()} onClick={scrollToContacts}>
+            </button>
+            
+            <button
+              className="py-2 text-left hover:bg-gray-100 rounded-md px-3"
+              onClick={scrollToContacts}
+            >
               Контакты
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-          
-          {/* Social Media Buttons - Mobile */}
-          <div className="lg:hidden mt-4 flex flex-col gap-2">
-            <NavigationMenuItem>
+            </button>
+
+            {/* Mobile Social Media */}
+            <div className="mt-4 space-y-2">
               <Link 
                 href="https://wa.me/77717689949" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full"
+                className="block"
+                onClick={() => setIsOpen(false)}
               >
                 <Button 
                   variant="ghost"
-                  className="hover:bg-gray-100 text-[#25D366] flex items-center gap-2 w-full border-none shadow-none font-medium"
+                  className="w-full hover:bg-gray-100 text-[#25D366] flex items-center gap-2 justify-start px-3"
                 >
                   <svg 
                     viewBox="0 0 24 24" 
@@ -165,18 +152,17 @@ export function ImprovedNavigation() {
                   WhatsApp
                 </Button>
               </Link>
-            </NavigationMenuItem>
 
-            <NavigationMenuItem>
               <Link 
                 href="https://www.instagram.com/maxxfine?igsh=amM3cGRhYTMxOTNt" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full"
+                className="block"
+                onClick={() => setIsOpen(false)}
               >
                 <Button 
                   variant="ghost"
-                  className="hover:bg-gray-100 text-[#E4405F] flex items-center gap-2 w-full border-none shadow-none font-medium"
+                  className="w-full hover:bg-gray-100 text-[#E4405F] flex items-center gap-2 justify-start px-3"
                 >
                   <svg 
                     viewBox="0 0 24 24" 
@@ -188,10 +174,10 @@ export function ImprovedNavigation() {
                   Instagram
                 </Button>
               </Link>
-            </NavigationMenuItem>
-          </div>
-        </NavigationMenuList>
-      </NavigationMenu>
+            </div>
+          </nav>
+        </div>
+      )}
 
       {/* Mobile Menu Button */}
       <Button variant="ghost" className="lg:hidden" onClick={() => setIsOpen(!isOpen)}>
