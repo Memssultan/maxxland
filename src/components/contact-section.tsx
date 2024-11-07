@@ -59,11 +59,7 @@ export function ContactSection({ onBack }: ContactSectionProps) {
               </p>
             </div>
 
-            <div className="mt-8">
-              <h3 className="font-bold mb-2">Часы работы:</h3>
-              <p>Понедельник - Пятница: 9:00 - 20:00</p>
-              <p>Суббота - Воскресенье: 10:00 - 18:00</p>
-            </div>
+           
           </div>
         </div>
       </div>

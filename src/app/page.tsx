@@ -7,14 +7,12 @@ import { CustomerReviews } from "@/components/customer-reviews"
 import { Button } from "@/components/ui/button"
 import { AboutSection } from "@/components/about-section"
 import { ContactSection } from "@/components/contact-section"
-import { ImprovedContactForm } from "@/components/improved-contact-form"
 import Image from "next/image"
 import Link from "next/link"
 import FeaturesSection from '@/components/ui/features-section'
 import BrandsSection from '@/components/brands-section'
 
 export default function HomePage() {
-  const [showContactSection, setShowContactSection] = React.useState(false)
   const [currentVideo, setCurrentVideo] = React.useState(0)
 
   const videos = [
@@ -94,31 +92,13 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Остальные секции */}
+        {/* Other Sections */}
         <FeaturesSection />
         <AboutSection />
         <BrandsSection />
         <PopularProducts />
         <CustomerReviews />
-
-        {/* Contact Forms with Animation */}
-        <div className="relative">
-          <div 
-            className={`transition-all duration-500 ease-in-out ${
-              showContactSection ? 'opacity-0 translate-x-full' : 'opacity-100 translate-x-0'
-            }`}
-          >
-            <ImprovedContactForm onShowContacts={() => setShowContactSection(true)} />
-          </div>
-
-          <div 
-            className={`absolute top-0 left-0 w-full transition-all duration-500 ease-in-out ${
-              showContactSection ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-full'
-            }`}
-          >
-            <ContactSection onBack={() => setShowContactSection(false)} />
-          </div>
-        </div>
+        <ContactSection />
       </main>
       
       {/* Footer */}
