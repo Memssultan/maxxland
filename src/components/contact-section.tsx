@@ -11,6 +11,18 @@ export function ContactSection({ onBack }: ContactSectionProps) {
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 bg-white" id="contacts">
       <div className="container mx-auto px-4">
+        <div className="w-full max-w-[550px] mx-auto mb-8">
+          {onBack && (
+            <Button 
+              variant="outline" 
+              className="w-full"
+              onClick={onBack}
+            >
+              Скрыть контакты
+            </Button>
+          )}
+        </div>
+
         <h2 className="text-4xl font-bold mb-6">Контакты</h2>
         <div className="grid grid-cols-1 gap-8">
           <div>
@@ -19,17 +31,31 @@ export function ContactSection({ onBack }: ContactSectionProps) {
             </p>
             
             <div className="space-y-4">
-              <p className="flex items-center">
-                <span className="mr-2">📍</span>
-                ул. Примерная, д. 123, г. Москва, 123456
-              </p>
+              <div className="space-y-2">
+                <p className="flex items-center">
+                  <span className="mr-2">📍</span>
+                  ул. Мангилик ел 28, г. Астана
+                </p>
+                <p className="flex items-center ml-6 text-gray-600">
+                  Show Room MaxxFine
+                </p>
+              </div>
+              <div className="space-y-2">
+                <p className="flex items-center">
+                  <span className="mr-2">📍</span>
+                  Аль-Фараби, 103, г. Алматы
+                </p>
+                <p className="flex items-center ml-6 text-gray-600">
+                  Show Room MaxxFine
+                </p>
+              </div>
               <p className="flex items-center">
                 <span className="mr-2">📞</span>
-                +7 (123) 456-78-90
+                +7 771 768 9949
               </p>
               <p className="flex items-center">
                 <span className="mr-2">✉️</span>
-                info@keramika-mebel.ru
+                infomaxxfine.com
               </p>
             </div>
 
@@ -38,16 +64,6 @@ export function ContactSection({ onBack }: ContactSectionProps) {
               <p>Понедельник - Пятница: 9:00 - 20:00</p>
               <p>Суббота - Воскресенье: 10:00 - 18:00</p>
             </div>
-
-            {onBack && (
-              <Button 
-                variant="outline" 
-                className="w-full max-w-[550px] mx-auto mt-8 block"
-                onClick={onBack}
-              >
-                Скрыть контакты
-              </Button>
-            )}
           </div>
         </div>
       </div>

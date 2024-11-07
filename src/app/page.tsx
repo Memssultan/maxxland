@@ -20,6 +20,7 @@ export default function HomePage() {
     <div className="flex flex-col min-h-screen">
       <ImprovedNavigation />
       <main className="flex-1">
+        {/* Hero Section */}
         <section className="w-full py-8 md:py-16 lg:py-24 xl:py-40 relative overflow-hidden">
           <video
             autoPlay
@@ -59,30 +60,34 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Sections */}
         <FeaturesSection />
         <AboutSection />
         <BrandsSection />
         <PopularProducts />
         <CustomerReviews />
 
-        <div className="relative overflow-hidden">
-          <div className={`transform transition-transform duration-500 ${showContactSection ? '-translate-x-full' : 'translate-x-0'}`}>
-            <ImprovedContactForm />
-            <Button 
-              variant="outline" 
-              className="mx-auto block mt-4"
-              onClick={() => setShowContactSection(true)}
-            >
-              Показать контакты
-            </Button>
+        {/* Contact Forms with Animation */}
+        <div className="relative">
+          <div 
+            className={`transition-all duration-500 ease-in-out ${
+              showContactSection ? 'opacity-0 translate-x-full' : 'opacity-100 translate-x-0'
+            }`}
+          >
+            <ImprovedContactForm onShowContacts={() => setShowContactSection(true)} />
           </div>
 
-          <div className={`absolute top-0 left-0 w-full transform transition-transform duration-500 ${showContactSection ? 'translate-x-0' : 'translate-x-full'}`}>
+          <div 
+            className={`absolute top-0 left-0 w-full transition-all duration-500 ease-in-out ${
+              showContactSection ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-full'
+            }`}
+          >
             <ContactSection onBack={() => setShowContactSection(false)} />
           </div>
         </div>
       </main>
       
+      {/* Footer */}
       <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
         <p className="text-xs text-gray-500">© 2024 Керамика и Мебель. Все права защищены.</p>
         <nav className="sm:ml-auto flex gap-4 sm:gap-6">

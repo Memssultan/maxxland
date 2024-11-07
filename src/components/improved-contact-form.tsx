@@ -1,4 +1,3 @@
-// improved-contact-form.tsx
 'use client'
 
 import * as React from "react"
@@ -6,24 +5,34 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { ArrowUpDown } from "lucide-react"
 
 interface ImprovedContactFormProps {
-  onToggleView?: () => void;
+  onShowContacts?: () => void;
 }
 
-export function ImprovedContactForm({ onToggleView }: ImprovedContactFormProps) {
+export function ImprovedContactForm({ onShowContacts }: ImprovedContactFormProps) {
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
+    <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
       <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center space-y-4 text-center">
-          <div className="space-y-2">
+        <div className="flex flex-col items-center">
+          <div className="w-full max-w-[550px]">
+            <Button 
+              variant="outline" 
+              className="w-full mb-8"
+              onClick={onShowContacts}
+            >
+              Показать контакты
+            </Button>
+          </div>
+
+          <div className="space-y-2 text-center">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Свяжитесь с нами</h2>
             <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mx-auto">
               У вас есть вопросы? Оставьте свои контактные данные, и мы свяжемся с вами в ближайшее время.
             </p>
           </div>
         </div>
+
         <div className="mx-auto w-full max-w-[550px] space-y-4 mt-8">
           <form className="grid gap-4">
             <Input placeholder="Имя" type="text" required />
@@ -41,22 +50,12 @@ export function ImprovedContactForm({ onToggleView }: ImprovedContactFormProps) 
               </SelectContent>
             </Select>
             <Textarea placeholder="Сообщение" required />
-            <div className="space-y-2">
-              <Button type="submit" className="w-full">Отправить</Button>
-              {onToggleView && (
-                <Button 
-                  variant="outline" 
-                  type="button"
-                  className="w-full flex items-center justify-center gap-2"
-                  onClick={onToggleView}
-                >
-                  <ArrowUpDown className="h-4 w-4" /> Показать расширенную форму
-                </Button>
-              )}
-            </div>
+            <Button type="submit">Отправить</Button>
           </form>
         </div>
       </div>
     </section>
   )
 }
+
+export default ImprovedContactForm
