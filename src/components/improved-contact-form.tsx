@@ -26,7 +26,7 @@ export function ImprovedContactForm({ onShowContacts }: ImprovedContactFormProps
           </div>
 
           <div className="space-y-2 text-center">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Свяжитесь с нами</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-red-700">Свяжитесь с нами</h2>
             <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mx-auto">
               У вас есть вопросы? Оставьте свои контактные данные, и мы свяжемся с вами в ближайшее время.
             </p>
@@ -50,7 +50,12 @@ export function ImprovedContactForm({ onShowContacts }: ImprovedContactFormProps
               </SelectContent>
             </Select>
             <Textarea placeholder="Сообщение" required />
-            <Button type="submit">Отправить</Button>
+            <Button 
+              type="submit" 
+              className="w-full bg-red-700 text-white hover:bg-red-800 active:bg-red-900"
+            >
+              Отправить
+            </Button>
           </form>
         </div>
       </div>
