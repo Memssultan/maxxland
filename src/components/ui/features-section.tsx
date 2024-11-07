@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react';
 import { Briefcase, Package, Umbrella, Coffee, Home, LucideIcon, ChevronRight } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
@@ -18,31 +20,32 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, descriptio
 
   return (
     <motion.div
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      className="h-full"
     >
       <Card className="h-full transition-all duration-300 hover:shadow-lg">
-        <CardContent className="flex flex-col items-center text-center p-6 space-y-4 h-full">
+        <CardContent className="flex flex-col items-center text-center p-3 sm:p-4 space-y-2 sm:space-y-3 h-full">
           <motion.div 
-            className="bg-primary/10 p-3 rounded-full"
+            className="bg-primary/10 p-2 rounded-full"
             animate={{ rotate: 360 }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           >
-            <Icon size={24} className="text-primary" />
+            <Icon size={16} className="text-primary" />
           </motion.div>
-          <h3 className="font-bold text-lg text-red-700">{title}</h3>
-          <p className="text-muted-foreground flex-grow">{description}</p>
+          <h3 className="font-bold text-sm sm:text-base text-red-700">{title}</h3>
+          <p className="text-xs sm:text-sm text-muted-foreground flex-grow">{description}</p>
           <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
-              <Button variant="outline" className="text-red-700 mt-4">
-                Подробнее <ChevronRight className="ml-2 h-4 w-4" />
+              <Button variant="outline" className="text-red-700 mt-1 sm:mt-2 text-xs sm:text-sm px-2 py-1 h-auto">
+                Подробнее <ChevronRight className="ml-1 h-3 w-3" />
               </Button>
             </DialogTrigger>
-            <DialogContent>
+            <DialogContent className="sm:max-w-[425px]">
               <DialogHeader>
                 <DialogTitle>{title}</DialogTitle>
               </DialogHeader>
-              <p>{details}</p>
+              <p className="text-sm">{details}</p>
             </DialogContent>
           </Dialog>
         </CardContent>
@@ -93,26 +96,26 @@ const FeaturesSection: React.FC = () => {
   );
 
   return (
-    <section className="py-16 px-4 bg-gradient-to-b from-background to-primary/5">
+    <section className="py-6 sm:py-8 md:py-12 px-2 sm:px-4 bg-gradient-to-b from-background to-primary/5">
       <div className="container mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col items-center mb-12"
+          className="flex flex-col items-center mb-6 sm:mb-8"
         >
-          <h2 className="text-4xl font-bold text-center text-primary mb-4">Наши преимущества</h2>
-          <div className="w-24 h-1 bg-red-700 rounded mb-8"></div>
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-primary mb-2 sm:mb-3">Наши преимущества</h2>
+          <div className="w-12 sm:w-16 h-1 bg-red-700 rounded mb-4 sm:mb-6"></div>
           <Input
             type="text"
             placeholder="Поиск преимуществ..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="max-w-md w-full"
+            className="max-w-[250px] sm:max-w-md w-full text-xs sm:text-sm"
           />
         </motion.div>
         <AnimatePresence>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 gap-2 sm:gap-4">
             {filteredFeatures.map((feature, index) => (
               <motion.div
                 key={index}
