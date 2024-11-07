@@ -14,20 +14,60 @@ import BrandsSection from '@/components/brands-section'
 
 export default function HomePage() {
   const [currentVideo, setCurrentVideo] = React.useState(0)
+  const [isVideoLoaded, setIsVideoLoaded] = React.useState(false)
+  const videoRefs = React.useRef<HTMLVideoElement[]>([])
 
   const videos = [
-    "/3.mp4",
-    "/1.mp4",
-    "/2.mp4"
+    {
+      src: "/3.mp4",
+      poster: "/poster3.jpg",
+      preload: "metadata" as const
+    },
+    {
+      src: "/1.mp4",
+      poster: "/poster1.jpg",
+      preload: "none" as const
+    },
+    {
+      src: "/2.mp4",
+      poster: "/poster2.jpg",
+      preload: "none" as const
+    }
   ]
 
   React.useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentVideo((prev) => (prev + 1) % videos.length)
-    }, 5000)
+    const preloadNextVideo = () => {
+      const nextIndex = (currentVideo + 1) % videos.length
+      if (videoRefs.current[nextIndex]) {
+        videoRefs.current[nextIndex].preload = "auto"
+      }
+    }
 
-    return () => clearInterval(interval)
-  }, [])
+    if (isVideoLoaded) {
+      const interval = setInterval(() => {
+        setCurrentVideo((prev) => {
+          const next = (prev + 1) % videos.length
+          preloadNextVideo()
+          return next
+        })
+      }, 5000)
+
+      return () => clearInterval(interval)
+    }
+  }, [currentVideo, isVideoLoaded])
+
+  const handleVideoLoaded = (index: number) => {
+    if (index === 0) {
+      setIsVideoLoaded(true)
+    }
+  }
+
+  const handleVideoSwitch = (index: number) => {
+    setCurrentVideo(index)
+    if (videoRefs.current[index]) {
+      videoRefs.current[index].preload = "auto"
+    }
+  }
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -35,19 +75,26 @@ export default function HomePage() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="w-full py-8 md:py-16 lg:py-24 xl:py-40 relative overflow-hidden">
-          {videos.map((videoSrc, index) => (
+          {videos.map((video, index) => (
             <video
-              key={videoSrc}
+              key={video.src}
+              ref={el => {
+                if (el) {
+                  videoRefs.current[index] = el
+                }
+              }}
               autoPlay
               muted
               loop
               playsInline
-              preload="auto"
+              preload={video.preload}
+              poster={video.poster}
+              onLoadedData={() => handleVideoLoaded(index)}
               className={`absolute top-0 left-0 w-full h-full object-cover z-0 transition-opacity duration-1000 ${
                 currentVideo === index ? 'opacity-100' : 'opacity-0'
               }`}
             >
-              <source src={videoSrc} type="video/mp4" />
+              <source src={video.src} type="video/mp4" />
             </video>
           ))}
           
@@ -61,6 +108,7 @@ export default function HomePage() {
                 width={200}
                 height={100}
                 className="mb-4 md:mb-[-11rem]"
+                priority
               />
               <div className="space-y-4">
                 <h1 className="text-2xl md:text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-white">
@@ -80,7 +128,7 @@ export default function HomePage() {
                 {videos.map((_, index) => (
                   <button
                     key={index}
-                    onClick={() => setCurrentVideo(index)}
+                    onClick={() => handleVideoSwitch(index)}
                     className={`w-2 h-2 rounded-full transition-all ${
                       currentVideo === index ? 'bg-white w-4' : 'bg-white/50'
                     }`}
@@ -101,7 +149,6 @@ export default function HomePage() {
         <ContactSection />
       </main>
       
-      {/* Footer */}
       <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
         <p className="text-xs text-gray-500">© 2024 Керамика и Мебель. Все права защищены.</p>
         <nav className="sm:ml-auto flex gap-4 sm:gap-6">
