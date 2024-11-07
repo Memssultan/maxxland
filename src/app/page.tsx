@@ -20,16 +20,19 @@ export default function HomePage() {
   const videos = [
     {
       src: "/3-n.mp4",
+      preview: "/preview3.mp4", // превью версия
       poster: "/poster3.jpg",
       preload: "metadata" as const
     },
     {
       src: "/1-n.mp4",
+      preview: "/preview1.mp4", // превью версия
       poster: "/poster1.jpg",
       preload: "none" as const
     },
     {
       src: "/2-n.mp4",
+      preview: "/preview2.mp4", // превью версия
       poster: "/poster2.jpg",
       preload: "none" as const
     }
