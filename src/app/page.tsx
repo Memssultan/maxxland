@@ -44,6 +44,7 @@ export default function HomePage() {
               muted
               loop
               playsInline
+              preload="auto"
               className={`absolute top-0 left-0 w-full h-full object-cover z-0 transition-opacity duration-1000 ${
                 currentVideo === index ? 'opacity-100' : 'opacity-0'
               }`}
