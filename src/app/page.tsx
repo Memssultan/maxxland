@@ -14,91 +14,58 @@ import BrandsSection from '@/components/brands-section'
 
 export default function HomePage() {
   const [currentVideo, setCurrentVideo] = React.useState(0)
-  const [isVideoLoaded, setIsVideoLoaded] = React.useState(false)
   const videoRefs = React.useRef<HTMLVideoElement[]>([])
 
   const videos = [
     {
       src: "/3-n.mp4",
-      preview: "/preview3.mp4", // превью версия
-      poster: "/poster3.jpg",
-      preload: "metadata" as const
     },
     {
       src: "/1-n.mp4",
-      preview: "/preview1.mp4", // превью версия
-      poster: "/poster1.jpg",
-      preload: "none" as const
     },
     {
       src: "/2-n.mp4",
-      preview: "/preview2.mp4", // превью версия
-      poster: "/poster2.jpg",
-      preload: "none" as const
     }
   ]
 
+  // Автоматическое переключение и предзагрузка следующего видео
   React.useEffect(() => {
-    const preloadNextVideo = () => {
-      const nextIndex = (currentVideo + 1) % videos.length
-      if (videoRefs.current[nextIndex]) {
-        videoRefs.current[nextIndex].preload = "auto"
-      }
-    }
+    const interval = setInterval(() => {
+      setCurrentVideo((prev) => {
+        const next = (prev + 1) % videos.length
+        // Предзагрузка следующего видео
+        if (videoRefs.current[next]) {
+          videoRefs.current[next].load()
+        }
+        return next
+      })
+    }, 5000)
 
-    if (isVideoLoaded) {
-      const interval = setInterval(() => {
-        setCurrentVideo((prev) => {
-          const next = (prev + 1) % videos.length
-          preloadNextVideo()
-          return next
-        })
-      }, 5000)
-
-      return () => clearInterval(interval)
-    }
-  }, [currentVideo, isVideoLoaded])
-
-  const handleVideoLoaded = (index: number) => {
-    if (index === 0) {
-      setIsVideoLoaded(true)
-    }
-  }
-
-  const handleVideoSwitch = (index: number) => {
-    setCurrentVideo(index)
-    if (videoRefs.current[index]) {
-      videoRefs.current[index].preload = "auto"
-    }
-  }
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <div className="flex flex-col min-h-screen">
       <ImprovedNavigation />
       <main className="flex-1">
-        {/* Hero Section */}
         <section className="w-full py-8 md:py-16 lg:py-24 xl:py-40 relative overflow-hidden">
           {videos.map((video, index) => (
             <video
-              key={video.src}
+              key={index}
               ref={el => {
                 if (el) {
                   videoRefs.current[index] = el
                 }
               }}
+              src={video.src}
               autoPlay
               muted
               loop
               playsInline
-              preload={video.preload}
-              poster={video.poster}
-              onLoadedData={() => handleVideoLoaded(index)}
               className={`absolute top-0 left-0 w-full h-full object-cover z-0 transition-opacity duration-1000 ${
                 currentVideo === index ? 'opacity-100' : 'opacity-0'
               }`}
-            >
-              <source src={video.src} type="video/mp4" />
-            </video>
+            />
           ))}
           
           <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-10"></div>
@@ -131,7 +98,7 @@ export default function HomePage() {
                 {videos.map((_, index) => (
                   <button
                     key={index}
-                    onClick={() => handleVideoSwitch(index)}
+                    onClick={() => setCurrentVideo(index)}
                     className={`w-2 h-2 rounded-full transition-all ${
                       currentVideo === index ? 'bg-white w-4' : 'bg-white/50'
                     }`}
@@ -143,7 +110,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Other Sections */}
         <FeaturesSection />
         <AboutSection />
         <BrandsSection />
