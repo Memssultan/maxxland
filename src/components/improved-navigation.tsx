@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { MountainIcon } from "lucide-react"
+import { MountainIcon, Menu, X } from "lucide-react"
 
 import {
   NavigationMenu,
@@ -13,6 +13,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+import { Button } from "@/components/ui/button"
 
 const categories = [
   {
@@ -33,11 +34,14 @@ const categories = [
 ]
 
 export function ImprovedNavigation() {
+  const [isOpen, setIsOpen] = React.useState(false)
+
   const scrollToContacts = () => {
     const contactsSection = document.getElementById('contacts')
     if (contactsSection) {
       contactsSection.scrollIntoView({ behavior: 'smooth' })
     }
+    setIsOpen(false)
   }
 
   const scrollToAbout = () => {
@@ -45,16 +49,20 @@ export function ImprovedNavigation() {
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: 'smooth' })
     }
+    setIsOpen(false)
   }
 
   return (
-    <header className="px-4 lg:px-6 h-14 flex items-center">
-      <Link href="/" className="flex items-center justify-center mr-6">
+    <header className="px-4 lg:px-6 h-14 flex items-center justify-between">
+      <Link href="/" className="flex items-center justify-center">
         <MountainIcon className="h-6 w-6 mr-2" />
         <span className="font-bold text-xl">MaxxFine</span>
       </Link>
-      <NavigationMenu>
-        <NavigationMenuList>
+      <Button variant="ghost" className="lg:hidden" onClick={() => setIsOpen(!isOpen)}>
+        {isOpen ? <X /> : <Menu />}
+      </Button>
+      <NavigationMenu className={`${isOpen ? 'flex' : 'hidden'} lg:flex absolute top-14 left-0 w-full bg-white lg:relative lg:top-0 lg:w-auto`}>
+        <NavigationMenuList className="flex-col lg:flex-row">
           <NavigationMenuItem>
             <NavigationMenuTrigger>Категории</NavigationMenuTrigger>
             <NavigationMenuContent>

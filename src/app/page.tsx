@@ -62,23 +62,22 @@ export default function HomePage() {
                 alt="Логотип компании"
                 width={200}
                 height={100}
-                className="mb-[-11rem]"
+                className="mb-4 md:mb-[-11rem]"
               />
               <div className="space-y-4">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-white">
+                <h1 className="text-2xl md:text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-white">
                   Керамогранит и мебель для вашего дома
                 </h1>
-                <p className="mx-auto max-w-[700px] text-gray-300 md:text-xl">
+                <p className="mx-auto max-w-[700px] text-sm md:text-base text-gray-300 md:text-xl">
                   Создайте уютное пространство с нашими качественными материалами и стильной мебелью
                 </p>
               </div>
-              <div className="space-x-4 mb-16"> {/* Увеличен отступ снизу */}
+              <div className="space-x-4 mb-8 md:mb-16">
                 <Button className="bg-white text-black hover:bg-gray-200">
                   Выбрать гарнитур
                 </Button>
               </div>
               
-              {/* Индикаторы видео теперь находятся ниже кнопки */}
               <div className="flex space-x-2">
                 {videos.map((_, index) => (
                   <button

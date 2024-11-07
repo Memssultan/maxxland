@@ -30,8 +30,8 @@ export function PopularProducts() {
   return (
     <section className="w-full py-12 md:py-24 lg:py-32">
       <div className="container px-4 md:px-6">
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">Популярные товары</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <h2 className="text-2xl md:text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8 md:mb-12">Популярные товары</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {popularProducts.map((product) => (
             <Card key={product.id} className="overflow-hidden">
               <CardContent className="p-0">
@@ -44,7 +44,7 @@ export function PopularProducts() {
                 />
               </CardContent>
               <CardFooter className="flex flex-col items-start p-4">
-                <h3 className="font-semibold text-lg mb-2">{product.name}</h3>
+                <h3 className="font-semibold text-sm md:text-lg mb-2">{product.name}</h3>
               </CardFooter>
             </Card>
           ))}
