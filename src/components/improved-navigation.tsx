@@ -52,6 +52,14 @@ export function ImprovedNavigation() {
     setIsOpen(false)
   }
 
+  const scrollToBrands = () => {
+    const brandsSection = document.getElementById('brands')
+    if (brandsSection) {
+      brandsSection.scrollIntoView({ behavior: 'smooth' })
+    }
+    setIsOpen(false)
+  }
+
   return (
     <header className="px-4 lg:px-6 h-14 flex items-center justify-between">
       <Link href="/" className="flex items-center justify-center">
@@ -121,6 +129,13 @@ export function ImprovedNavigation() {
               О нас
             </NavigationMenuLink>
           </NavigationMenuItem>
+
+          <NavigationMenuItem>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()} onClick={scrollToBrands}>
+              Бренды
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+
           <NavigationMenuItem>
             <NavigationMenuLink className={navigationMenuTriggerStyle()} onClick={scrollToContacts}>
               Контакты
