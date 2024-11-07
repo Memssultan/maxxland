@@ -26,7 +26,7 @@ const BrandsSection: React.FC = () => {
  ];
 
  return (
-   <section className="py-8 sm:py-12 md:py-16 bg-background">
+   <section id="brands" className="py-8 sm:py-12 md:py-16 bg-background">
      <div className="container mx-auto px-4">
        <div className="flex flex-col items-center mb-8 sm:mb-12">
          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-primary mb-4">Наши бренды</h2>
