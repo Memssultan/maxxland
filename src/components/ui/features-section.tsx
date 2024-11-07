@@ -5,7 +5,6 @@ import { Briefcase, Package, Umbrella, Coffee, Home, LucideIcon, ChevronRight } 
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface FeatureCardProps {
@@ -55,8 +54,6 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, descriptio
 };
 
 const FeaturesSection: React.FC = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-
   const features: FeatureCardProps[] = [
     {
       icon: Briefcase,
@@ -90,11 +87,6 @@ const FeaturesSection: React.FC = () => {
     }
   ];
 
-  const filteredFeatures = features.filter(feature => 
-    feature.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    feature.description.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
   return (
     <section className="py-6 sm:py-8 md:py-12 px-2 sm:px-4 bg-gradient-to-b from-background to-primary/5">
       <div className="container mx-auto">
@@ -106,17 +98,10 @@ const FeaturesSection: React.FC = () => {
         >
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-primary mb-2 sm:mb-3">Наши преимущества</h2>
           <div className="w-12 sm:w-16 h-1 bg-red-700 rounded mb-4 sm:mb-6"></div>
-          <Input
-            type="text"
-            placeholder="Поиск преимуществ..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="max-w-[250px] sm:max-w-md w-full text-xs sm:text-sm"
-          />
         </motion.div>
         <AnimatePresence>
           <div className="grid grid-cols-2 gap-2 sm:gap-4">
-            {filteredFeatures.map((feature, index) => (
+            {features.map((feature, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
