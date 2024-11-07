@@ -64,7 +64,7 @@ export function ImprovedNavigation() {
       <NavigationMenu className={`${isOpen ? 'flex' : 'hidden'} lg:flex absolute top-14 left-0 w-full bg-white lg:relative lg:top-0 lg:w-auto`}>
         <NavigationMenuList className="flex-col lg:flex-row">
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Категории</NavigationMenuTrigger>
+            
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                 {categories.map((category) => (
