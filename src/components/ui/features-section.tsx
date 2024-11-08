@@ -1,7 +1,16 @@
 'use client'
 
 import React, { useState } from 'react';
-import { Briefcase, Package, Umbrella, Coffee, Home, LucideIcon, ChevronRight } from 'lucide-react';
+import { 
+  Building2, 
+  LayoutGrid, 
+  Award, 
+  Users, 
+  Shapes, 
+  GalleryHorizontalEnd,
+  ChevronRight,
+  LucideIcon
+} from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -25,11 +34,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, descriptio
     >
       <Card className="h-full transition-all duration-300 hover:shadow-lg">
         <CardContent className="flex flex-col items-center text-center p-3 sm:p-4 space-y-2 sm:space-y-3 h-full">
-          <motion.div 
-            className="bg-primary/10 p-2 rounded-full"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          >
+          <motion.div className="bg-primary/10 p-2 rounded-full">
             <Icon size={16} className="text-primary" />
           </motion.div>
           <h3 className="font-bold text-sm sm:text-base text-red-700">{title}</h3>
@@ -56,31 +61,37 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, descriptio
 const FeaturesSection: React.FC = () => {
   const features: FeatureCardProps[] = [
     {
-      icon: Briefcase,
+      icon: Building2,
       title: "Официальные представители",
       description: "У нас представлено Более 20 премиальных мировых брендов",
       details: "Мы являемся официальными представителями ведущих мировых производителей сантехники. Это гарантирует подлинность товаров, лучшие цены и полную поддержку производителя."
     },
     {
-      icon: Package,
+      icon: LayoutGrid,
       title: "Большая экспозиция",
       description: "Самые крупные выставки в СНГ брендов INALCO, FMG, RIMADESIO, VALCUCINE",
       details: "Наша экспозиция позволяет вам увидеть и потрогать продукцию перед покупкой. Мы регулярно обновляем выставочные образцы, чтобы показать последние новинки и тренды в мире сантехники."
     },
     {
-      icon: Umbrella,
+      icon: Award,
       title: "Высокая экспертность команды",
       description: "100% ответственность за комплектацию заказа. У нас вы соберете заказ даже если комплектующие разных брендов",
       details: "Наши специалисты имеют многолетний опыт работы в сфере сантехники. Мы поможем вам подобрать оптимальное решение, учитывая ваши потребности и бюджет, и гарантируем полную совместимость всех компонентов."
     },
     {
-      icon: Coffee,
+      icon: Users,
       title: "Выгодное сотрудничество",
       description: "Персональные предложения для дизайнеров интерьера, архитекторов, декораторов",
       details: "Мы ценим профессионалов и предлагаем специальные условия сотрудничества для дизайнеров и архитекторов. Это включает в себя эксклюзивные скидки, приоритетное обслуживание и доступ к обучающим материалам."
     },
     {
-      icon: Home,
+      icon: Shapes,
+      title: "Текстуры и 3д",
+      description: "С радостью предоставим дизайнерам и проектировщикам 3д текстуры",
+      details: "Вы можете заложить именно тот керамогранит или именно ту мебель в визуализацию проекта!"
+    },
+    {
+      icon: GalleryHorizontalEnd,
       title: "Текстуры и 3д",
       description: "С радостью предоставим дизайнерам и проектировщикам 3д текстуры",
       details: "Вы можете заложить именно тот керамогранит или именно ту мебель в визуализацию проекта!"

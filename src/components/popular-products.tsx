@@ -31,7 +31,9 @@ export function PopularProducts() {
     <section className="w-full py-12 md:py-24 lg:py-32">
       <div className="container px-4 md:px-6">
         <h2 className="text-2xl md:text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8 md:mb-12">Популярные товары</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        {/* Desktop version (unchanged) */}
+        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {popularProducts.map((product) => (
             <Card key={product.id} className="overflow-hidden">
               <CardContent className="p-0">
@@ -47,6 +49,24 @@ export function PopularProducts() {
                 <h3 className="font-semibold text-sm md:text-lg mb-2">{product.name}</h3>
               </CardFooter>
             </Card>
+          ))}
+        </div>
+
+        {/* Mobile version */}
+        <div className="sm:hidden grid grid-cols-2 gap-4">
+          {popularProducts.map((product) => (
+            <div key={product.id} className="flex flex-col">
+              <div className="relative w-full aspect-square mb-2">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-md"
+                />
+              </div>
+              <h3 className="font-semibold text-xs leading-tight">{product.name}</h3>
+            </div>
           ))}
         </div>
       </div>
