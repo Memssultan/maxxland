@@ -22,7 +22,24 @@ const BrandsSection: React.FC = () => {
    { 
      logo: '/logos/bertocci.png',
      url: 'https://www.bertocci.it/'
+   },
+   {
+     logo: '/logos/antoniolupi.jpeg',
+     url: 'https://www.antoniolupi.it/en/'
+   },
+   {
+     logo: '/logos/zucchetti.jpeg',
+     url: 'https://www.zucchettidesign.it/en'
+   },
+   {
+    logo: '/logos/toto.jpeg',
+    url: 'https://www.toto.com/en/design/'
+   },
+   {
+    logo: '/logos/rimadesio.jpg',
+    url: 'https://www.rimadesio.it/ru/'
    }
+
  ];
 
  return (
