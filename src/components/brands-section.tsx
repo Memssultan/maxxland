@@ -52,9 +52,13 @@ const BrandsSection: React.FC = () => {
     url: 'https://www.inalco.global/ru'
    },
    {
-    logo: 'logos/mutina.svg',
+    logo: '/logos/mutina.svg',
     url: 'https://www.mutina.it/en'
    },
+   {
+    logo: '/logos/bossini.jpg',
+    url: 'https://www.bossini.it/ru'
+   }
 
  ];
 
