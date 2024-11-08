@@ -4,6 +4,7 @@ import React from 'react'
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CheckCircle, Building, Users } from "lucide-react"
+import Image from "next/image"
 
 export function AboutSection() {
   return (
@@ -28,24 +29,47 @@ export function AboutSection() {
           <TabsContent value="about">
             <Card>
               <CardContent className="p-4 sm:p-6">
-                <div className="flex flex-col sm:flex-row items-start sm:space-x-4 space-y-4 sm:space-y-0">
-                  <Building className="h-6 w-6 text-gray-900 mt-1" />
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-4">Наша компания</h3>
-                    <p className="text-sm sm:text-base mb-4">
-                      Компания "MaxxFine" - ваш надежный партнер в создании уютного и стильного интерьера. Мы
-                      специализируемся на продаже высококачественного керамогранита, а также мебели для ванной и кухни.
-                    </p>
+                {/* О компании с изображением */}
+                <div className="mb-6">
+                  <div className="relative w-full h-[100px] sm:h-[150px] rounded-lg overflow-hidden mb-4">
+                    <Image
+                      src="/kitchen.jpg"
+                      alt="Современная кухня"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="flex flex-col sm:flex-row items-start sm:space-x-4 space-y-4 sm:space-y-0">
+                    <Building className="h-6 w-6 text-gray-900 mt-1" />
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-4">Наша компания</h3>
+                      <p className="text-sm sm:text-base">
+                        Компания "MaxxFine" - ваш надежный партнер в создании уютного и стильного интерьера. Мы
+                        специализируемся на продаже высококачественного керамогранита, а также мебели для ванной и кухни.
+                      </p>
+                    </div>
                   </div>
                 </div>
-                <div className="flex flex-col sm:flex-row items-start sm:space-x-4 space-y-4 sm:space-y-0 mt-4 sm:mt-6">
-                  <Users className="h-6 w-6 text-gray-900 mt-1" />
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-4">Наша миссия</h3>
-                    <p className="text-sm sm:text-base">
-                      Помочь каждому клиенту воплотить в жизнь свои идеи по обустройству дома, предоставляя
-                      широкий ассортимент продукции и профессиональную консультацию.
-                    </p>
+
+                {/* Наша миссия с изображением */}
+                <div>
+                  <div className="relative w-full h-[100px] sm:h-[150px] rounded-lg overflow-hidden mb-4">
+                    <Image
+                      src="/livingroom.jpg"
+                      alt="Современная гостиная"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="flex flex-col sm:flex-row items-start sm:space-x-4 space-y-4 sm:space-y-0">
+                    <Users className="h-6 w-6 text-gray-900 mt-1" />
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-4">Наша миссия</h3>
+                      <p className="text-sm sm:text-base">
+                        Помочь каждому клиенту воплотить в жизнь свои идеи по обустройству дома, предоставляя
+                        широкий ассортимент продукции и профессиональную консультацию.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </CardContent>
@@ -54,6 +78,14 @@ export function AboutSection() {
           <TabsContent value="why">
             <Card>
               <CardContent className="p-4 sm:p-6">
+                <div className="relative w-full h-[100px] sm:h-[150px] rounded-lg overflow-hidden mb-6">
+                  <Image
+                    src="/livingroom2.jpg"
+                    alt="Интерьер гостиной"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
                 <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6">Почему выбирают нас:</h3>
                 <ul className="grid grid-cols-1 gap-3 sm:gap-4">
                   {[
