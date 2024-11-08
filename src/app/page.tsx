@@ -15,40 +15,64 @@ import BrandsSection from '@/components/brands-section'
 export default function HomePage() {
   const [currentVideo, setCurrentVideo] = React.useState(0)
   const videoRefs = React.useRef<HTMLVideoElement[]>([])
+  const containerRef = React.useRef<HTMLDivElement>(null)
 
   const videos = [
     {
       src: "/3-n.mp4",
+      poster: "/poster-3.jpg" // Замените на реальный путь к постеру
     },
     {
       src: "/1-n.mp4",
+      poster: "/poster-1.jpg" // Замените на реальный путь к постеру
     },
     {
       src: "/2-n.mp4",
+      poster: "/poster-2.jpg" // Замените на реальный путь к постеру
     }
   ]
 
-  // Автоматическое переключение и предзагрузка следующего видео
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          videoRefs.current[currentVideo]?.play()
+        } else {
+          videoRefs.current[currentVideo]?.pause()
+        }
+      },
+      { threshold: 0.5 }
+    )
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current)
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current)
+      }
+    }
+  }, [currentVideo])
+
   React.useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentVideo((prev) => {
-        const next = (prev + 1) % videos.length
-        // Предзагрузка следующего видео
-        if (videoRefs.current[next]) {
-          videoRefs.current[next].load()
-        }
-        return next
-      })
+      setCurrentVideo((prev) => (prev + 1) % videos.length)
     }, 5000)
 
     return () => clearInterval(interval)
   }, [])
 
+  const handleVideoChange = (index: number) => {
+    setCurrentVideo(index)
+    videoRefs.current[index]?.play()
+  }
+
   return (
     <div className="flex flex-col min-h-screen">
       <ImprovedNavigation />
       <main className="flex-1">
-        <section className="w-full py-8 md:py-16 lg:py-24 xl:py-40 relative overflow-hidden">
+        <section ref={containerRef} className="w-full py-8 md:py-16 lg:py-24 xl:py-40 relative overflow-hidden">
           {videos.map((video, index) => (
             <video
               key={index}
@@ -58,7 +82,8 @@ export default function HomePage() {
                 }
               }}
               src={video.src}
-              autoPlay
+              poster={video.poster}
+              preload="metadata"
               muted
               loop
               playsInline
@@ -98,7 +123,7 @@ export default function HomePage() {
                 {videos.map((_, index) => (
                   <button
                     key={index}
-                    onClick={() => setCurrentVideo(index)}
+                    onClick={() => handleVideoChange(index)}
                     className={`w-2 h-2 rounded-full transition-all ${
                       currentVideo === index ? 'bg-white w-4' : 'bg-white/50'
                     }`}
