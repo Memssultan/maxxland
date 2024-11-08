@@ -24,7 +24,7 @@ export default function HomePage() {
     {
       src: "/3-n.mp4",
       lowQualitySrc: "/preview3.mp4",
-      title: "Rimadesio logo",
+      title: "Rimadesio",
       description: "Итальянский стиль и качество в каждой детали: элегантные двери, перегородки и системы хранения для вашего интерьера."
     },
     {
@@ -36,7 +36,7 @@ export default function HomePage() {
     {
       src: "/2-n.mp4",
       lowQualitySrc: "/preview2.mp4",
-      title: "Zucchetti logo",
+      title: "Zucchetti",
       description: "Итальянская роскошь для вашей ванной: стильные душевые, ванны и смесители, которые создают комфорт и уникальный дизайн"
     }
   ]
