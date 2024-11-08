@@ -23,22 +23,18 @@ export default function HomePage() {
   const videos = [
     {
       src: "/3-n.mp4",
-      poster: "/poster-3.jpg",
       lowQualitySrc: "/preview3.mp4"
     },
     {
       src: "/1-n.mp4",
-      poster: "/poster-1.jpg",
       lowQualitySrc: "/preview1.mp4"
     },
     {
       src: "/2-n.mp4",
-      poster: "/poster-2.jpg",
       lowQualitySrc: "/preview2.mp4"
     }
   ]
 
-  // Функция для проверки загрузки видео
   const isVideoLoaded = (index: number) => {
     return loadedVideos[index] === true
   }
@@ -51,7 +47,6 @@ export default function HomePage() {
     }))
   }
 
-  // При монтировании компонента начинаем загрузку всех видео
   React.useEffect(() => {
     if (isInitialLoad.current) {
       console.log('Initial load - starting to load all videos')
@@ -63,10 +58,6 @@ export default function HomePage() {
       isInitialLoad.current = false
     }
   }, [])
-
-  React.useEffect(() => {
-    console.log('Current loaded videos state:', loadedVideos)
-  }, [loadedVideos])
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -99,18 +90,14 @@ export default function HomePage() {
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentVideo(prev => {
-        const next = (prev + 1) % videos.length
-        console.log(`Auto-switching to video ${next}, loaded: ${isVideoLoaded(next)}`)
-        return next
-      })
+      setCurrentVideo(prev => (prev + 1) % videos.length)
     }, 5000)
 
     return () => clearInterval(interval)
   }, [])
 
   const handleVideoChange = (index: number) => {
-    console.log(`Manually switching to video ${index}, loaded: ${isVideoLoaded(index)}`)
+    console.log(`Switching to video ${index}, loaded: ${isVideoLoaded(index)}`)
     const currentVideoEl = videoRefs.current[currentVideo]
     const currentPreviewEl = previewRefs.current[currentVideo]
     const nextVideoEl = videoRefs.current[index]
@@ -143,7 +130,6 @@ export default function HomePage() {
                   }
                 }}
                 src={video.lowQualitySrc}
-                poster={video.poster}
                 preload="auto"
                 muted
                 loop
@@ -164,7 +150,6 @@ export default function HomePage() {
                   }
                 }}
                 src={video.src}
-                poster={video.poster}
                 preload="auto"
                 muted
                 loop
