@@ -19,6 +19,7 @@ export default function HomePage() {
   const previewRefs = React.useRef<HTMLVideoElement[]>([])
   const containerRef = React.useRef<HTMLDivElement>(null)
   const isInitialLoad = React.useRef(true)
+  const touchStartX = React.useRef<number | null>(null)
 
   const videos = [
     {
@@ -40,6 +41,32 @@ export default function HomePage() {
       description: "Итальянская роскошь для вашей ванной: стильные душевые, ванны и смесители, которые создают комфорт и уникальный дизайн"
     }
   ]
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+  }
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return
+
+    const touchEndX = e.changedTouches[0].clientX
+    const diffX = touchEndX - touchStartX.current
+
+    // Минимальное расстояние свайпа для переключения (в пикселях)
+    const minSwipeDistance = 50
+
+    if (Math.abs(diffX) > minSwipeDistance) {
+      if (diffX > 0) {
+        // Свайп вправо - предыдущее видео
+        setCurrentVideo(prev => (prev - 1 + videos.length) % videos.length)
+      } else {
+        // Свайп влево - следующее видео
+        setCurrentVideo(prev => (prev + 1) % videos.length)
+      }
+    }
+
+    touchStartX.current = null
+  }
 
   const isVideoLoaded = (index: number) => {
     return loadedVideos[index] === true
@@ -125,10 +152,14 @@ export default function HomePage() {
     <div className="flex flex-col min-h-screen">
       <ImprovedNavigation />
       <main className="flex-1">
-        <section ref={containerRef} className="w-full py-8 md:py-16 lg:py-24 xl:py-40 relative overflow-hidden">
+        <section 
+          ref={containerRef} 
+          className="w-full py-8 md:py-16 lg:py-24 xl:py-40 relative overflow-hidden"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           {videos.map((video, index) => (
             <React.Fragment key={index}>
-              {/* Превью видео */}
               <video
                 ref={el => {
                   if (el) {
@@ -145,13 +176,12 @@ export default function HomePage() {
                   currentVideo === index && !isVideoLoaded(index) ? 'opacity-100' : 'opacity-0'
                 }`}
               />
-              {/* Высококачественное видео */}
               <video
                 ref={el => {
                   if (el) {
                     videoRefs.current[index] = el
                     if (!isVideoLoaded(index)) {
-                      el.load() // Принудительно начинаем загрузку
+                      el.load()
                     }
                   }
                 }}
