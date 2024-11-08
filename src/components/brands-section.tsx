@@ -58,6 +58,14 @@ const BrandsSection: React.FC = () => {
    {
     logo: '/logos/bossini.jpg',
     url: 'https://www.bossini.it/ru'
+   },
+   {
+    logo: '/logos/DW.jpg',
+    url : 'https://www.decor-walther.com/ru/'
+   },
+   {
+    logo: '/logos/valcucine.svg',
+    url: 'https://www.valcucine.com/'
    }
 
  ];
