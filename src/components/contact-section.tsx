@@ -11,9 +11,10 @@ interface ContactSectionProps {
 
 export function ContactSection({ onBack }: ContactSectionProps) {
   React.useEffect(() => {
-    const initMap = () => {
+    const initMaps = () => {
       if ((window as any).DG) {
-        const map = (window as any).DG.map('map', {
+        // Карта Астаны
+        const mapAstana = (window as any).DG.map('map', {
           center: [51.11087, 71.4334],
           zoom: 17,
           fullscreenControl: false,
@@ -21,19 +22,31 @@ export function ContactSection({ onBack }: ContactSectionProps) {
         });
 
         (window as any).DG.marker([51.11087, 71.4334])
-          .addTo(map)
+          .addTo(mapAstana)
           .bindPopup('MaxxFine Show Room<br>проспект Мангилик Ел 28');
+
+        // Карта Алматы с обновленными координатами
+        const mapAlmaty = (window as any).DG.map('map2', {
+          center: [43.20576, 76.91278],
+          zoom: 17,
+          fullscreenControl: false,
+          zoomControl: true
+        });
+
+        (window as any).DG.marker([43.20576, 76.91278])
+          .addTo(mapAlmaty)
+          .bindPopup('MaxxFine Show Room<br>проспект Аль-Фараби, 103');
       }
     };
 
     if ((window as any).DG) {
-      initMap();
+      initMaps();
     } else {
-      window.addEventListener('DGScriptReady', initMap);
+      window.addEventListener('DGScriptReady', initMaps);
     }
 
     return () => {
-      window.removeEventListener('DGScriptReady', initMap);
+      window.removeEventListener('DGScriptReady', initMaps);
     };
   }, []);
 
@@ -62,7 +75,7 @@ export function ContactSection({ onBack }: ContactSectionProps) {
         </div>
 
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8 md:mb-12 text-red-700">
             Контакты
           </h2>
           <p className="text-base md:text-lg text-gray-600 mb-8 md:mb-12 text-center max-w-2xl mx-auto px-4">
@@ -72,11 +85,11 @@ export function ContactSection({ onBack }: ContactSectionProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-8 md:mb-12">
             <Card className="p-4 md:p-6">
               <CardContent className="p-0">
-                <h3 className="text-lg md:text-xl font-semibold mb-4">Наши шоурумы</h3>
+                <h3 className="text-lg md:text-xl font-semibold mb-4 text-red-700">Наши шоурумы</h3>
                 <div className="space-y-4 md:space-y-6">
                   <div className="space-y-2">
                     <div className="flex items-start">
-                      <span className="text-pink-500 mr-2 text-lg flex-shrink-0">•</span>
+                      <span className="text-red-500 mr-2 text-lg flex-shrink-0">•</span>
                       <div>
                         <p className="font-medium">г. Астана</p>
                         <p className="text-gray-600 text-sm md:text-base">проспект Мангилик Ел 28</p>
@@ -87,7 +100,7 @@ export function ContactSection({ onBack }: ContactSectionProps) {
 
                   <div className="space-y-2">
                     <div className="flex items-start">
-                      <span className="text-pink-500 mr-2 text-lg flex-shrink-0">•</span>
+                      <span className="text-red-500 mr-2 text-lg flex-shrink-0">•</span>
                       <div>
                         <p className="font-medium">г. Алматы</p>
                         <p className="text-gray-600 text-sm md:text-base">проспект Аль-Фараби, 103</p>
@@ -101,7 +114,7 @@ export function ContactSection({ onBack }: ContactSectionProps) {
 
             <Card className="p-4 md:p-6">
               <CardContent className="p-0">
-                <h3 className="text-lg md:text-xl font-semibold mb-4">Связаться с нами</h3>
+                <h3 className="text-lg md:text-xl font-semibold mb-4 text-red-700">Связаться с нами</h3>
                 <div className="space-y-3 md:space-y-4">
                   <a href="tel:+77717689949" className="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded-lg transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-pink-500 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -121,12 +134,22 @@ export function ContactSection({ onBack }: ContactSectionProps) {
             </Card>
           </div>
 
-          {/* 2GIS Map */}
-          <Card className="p-1">
-            <div className="h-[250px] sm:h-[300px] md:h-[400px] w-full rounded-lg overflow-hidden">
-              <div id="map" className="w-full h-full"></div>
-            </div>
-          </Card>
+          {/* 2GIS Maps */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-8 md:mb-12">
+            {/* Астана */}
+            <Card className="p-1">
+              <div className="h-[170px] sm:h-[200px] md:h-[250px] w-full rounded-lg overflow-hidden">
+                <div id="map" className="w-full h-full"></div>
+              </div>
+            </Card>
+
+            {/* Алматы */}
+            <Card className="p-1">
+              <div className="h-[170px] sm:h-[200px] md:h-[250px] w-full rounded-lg overflow-hidden">
+                <div id="map2" className="w-full h-full"></div>
+              </div>
+            </Card>
+          </div>
 
           {/* Мобильные кнопки быстрого доступа */}
           <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 md:hidden">
@@ -149,18 +172,32 @@ export function ContactSection({ onBack }: ContactSectionProps) {
                 </svg>
                 <span className="text-xs">Написать</span>
               </a>
-              <a 
-                href="https://2gis.kz/astana/firm/70000001018122229"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col items-center space-y-1"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-pink-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <span className="text-xs">Маршрут</span>
-              </a>
+              <div className="flex space-x-4">
+                <a 
+                  href="https://2gis.kz/astana/firm/70000001018122229"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center space-y-1"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-pink-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span className="text-xs">Астана</span>
+                </a>
+                <a 
+                  href="https://2gis.kz/almaty/geo/43.20576%2C76.91278"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center space-y-1"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-pink-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span className="text-xs">Алматы</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
