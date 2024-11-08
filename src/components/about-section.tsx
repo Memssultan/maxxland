@@ -61,7 +61,6 @@ export function AboutSection() {
                     "Широкий ассортимент продукции от ведущих производителей",
                     "Профессиональные консультации и помощь в выборе",
                     "Гарантия качества на все товары",
-                    "Удобная доставка и установка"
                   ].map((item, index) => (
                     <li key={index} className="flex items-center space-x-3">
                       <CheckCircle className="h-5 w-5 text-gray-900 flex-shrink-0" />
