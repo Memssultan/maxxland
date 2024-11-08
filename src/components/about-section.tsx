@@ -80,7 +80,7 @@ export function AboutSection() {
               <CardContent className="p-4 sm:p-6">
                 <div className="relative w-full h-[100px] sm:h-[150px] rounded-lg overflow-hidden mb-6">
                   <Image
-                    src="/livingroom2.jpg"
+                    src="/212.png"
                     alt="Интерьер гостиной"
                     fill
                     className="object-cover"
