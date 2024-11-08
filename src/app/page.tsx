@@ -14,31 +14,73 @@ import BrandsSection from '@/components/brands-section'
 
 export default function HomePage() {
   const [currentVideo, setCurrentVideo] = React.useState(0)
+  const [loadedVideos, setLoadedVideos] = React.useState<{ [key: number]: boolean }>({})
   const videoRefs = React.useRef<HTMLVideoElement[]>([])
+  const previewRefs = React.useRef<HTMLVideoElement[]>([])
   const containerRef = React.useRef<HTMLDivElement>(null)
+  const isInitialLoad = React.useRef(true)
 
   const videos = [
     {
       src: "/3-n.mp4",
-      poster: "/poster-3.jpg" // Замените на реальный путь к постеру
+      poster: "/poster-3.jpg",
+      lowQualitySrc: "/preview3.mp4"
     },
     {
       src: "/1-n.mp4",
-      poster: "/poster-1.jpg" // Замените на реальный путь к постеру
+      poster: "/poster-1.jpg",
+      lowQualitySrc: "/preview1.mp4"
     },
     {
       src: "/2-n.mp4",
-      poster: "/poster-2.jpg" // Замените на реальный путь к постеру
+      poster: "/poster-2.jpg",
+      lowQualitySrc: "/preview2.mp4"
     }
   ]
+
+  // Функция для проверки загрузки видео
+  const isVideoLoaded = (index: number) => {
+    return loadedVideos[index] === true
+  }
+
+  const handleHighQualityLoad = (index: number) => {
+    console.log(`Video ${index} loaded`)
+    setLoadedVideos(prev => ({
+      ...prev,
+      [index]: true
+    }))
+  }
+
+  // При монтировании компонента начинаем загрузку всех видео
+  React.useEffect(() => {
+    if (isInitialLoad.current) {
+      console.log('Initial load - starting to load all videos')
+      videos.forEach((_, index) => {
+        if (videoRefs.current[index]) {
+          videoRefs.current[index].load()
+        }
+      })
+      isInitialLoad.current = false
+    }
+  }, [])
+
+  React.useEffect(() => {
+    console.log('Current loaded videos state:', loadedVideos)
+  }, [loadedVideos])
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          videoRefs.current[currentVideo]?.play()
+          console.log(`Playing video ${currentVideo}, loaded: ${isVideoLoaded(currentVideo)}`)
+          if (isVideoLoaded(currentVideo)) {
+            videoRefs.current[currentVideo]?.play()
+          } else {
+            previewRefs.current[currentVideo]?.play()
+          }
         } else {
           videoRefs.current[currentVideo]?.pause()
+          previewRefs.current[currentVideo]?.pause()
         }
       },
       { threshold: 0.5 }
@@ -53,19 +95,37 @@ export default function HomePage() {
         observer.unobserve(containerRef.current)
       }
     }
-  }, [currentVideo])
+  }, [currentVideo, loadedVideos])
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentVideo((prev) => (prev + 1) % videos.length)
+      setCurrentVideo(prev => {
+        const next = (prev + 1) % videos.length
+        console.log(`Auto-switching to video ${next}, loaded: ${isVideoLoaded(next)}`)
+        return next
+      })
     }, 5000)
 
     return () => clearInterval(interval)
   }, [])
 
   const handleVideoChange = (index: number) => {
+    console.log(`Manually switching to video ${index}, loaded: ${isVideoLoaded(index)}`)
+    const currentVideoEl = videoRefs.current[currentVideo]
+    const currentPreviewEl = previewRefs.current[currentVideo]
+    const nextVideoEl = videoRefs.current[index]
+    const nextPreviewEl = previewRefs.current[index]
+    
+    currentVideoEl?.pause()
+    currentPreviewEl?.pause()
+    
+    if (isVideoLoaded(index)) {
+      nextVideoEl?.play()
+    } else {
+      nextPreviewEl?.play()
+    }
+    
     setCurrentVideo(index)
-    videoRefs.current[index]?.play()
   }
 
   return (
@@ -74,23 +134,48 @@ export default function HomePage() {
       <main className="flex-1">
         <section ref={containerRef} className="w-full py-8 md:py-16 lg:py-24 xl:py-40 relative overflow-hidden">
           {videos.map((video, index) => (
-            <video
-              key={index}
-              ref={el => {
-                if (el) {
-                  videoRefs.current[index] = el
-                }
-              }}
-              src={video.src}
-              poster={video.poster}
-              preload="metadata"
-              muted
-              loop
-              playsInline
-              className={`absolute top-0 left-0 w-full h-full object-cover z-0 transition-opacity duration-1000 ${
-                currentVideo === index ? 'opacity-100' : 'opacity-0'
-              }`}
-            />
+            <React.Fragment key={index}>
+              {/* Превью видео */}
+              <video
+                ref={el => {
+                  if (el) {
+                    previewRefs.current[index] = el
+                  }
+                }}
+                src={video.lowQualitySrc}
+                poster={video.poster}
+                preload="auto"
+                muted
+                loop
+                playsInline
+                onError={(e) => console.error(`Preview video ${index} error:`, e)}
+                className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                  currentVideo === index && !isVideoLoaded(index) ? 'opacity-100' : 'opacity-0'
+                }`}
+              />
+              {/* Высококачественное видео */}
+              <video
+                ref={el => {
+                  if (el) {
+                    videoRefs.current[index] = el
+                    if (!isVideoLoaded(index)) {
+                      el.load() // Принудительно начинаем загрузку
+                    }
+                  }
+                }}
+                src={video.src}
+                poster={video.poster}
+                preload="auto"
+                muted
+                loop
+                playsInline
+                onLoadedData={() => handleHighQualityLoad(index)}
+                onError={(e) => console.error(`High quality video ${index} error:`, e)}
+                className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                  currentVideo === index && isVideoLoaded(index) ? 'opacity-100' : 'opacity-0'
+                }`}
+              />
+            </React.Fragment>
           ))}
           
           <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-10"></div>
