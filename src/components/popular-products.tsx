@@ -19,7 +19,7 @@ const popularProducts = [
   },
   {
     id: 3,
-    name: "Подвесной унитаз",
+    name: "Подвесной унитаз KOMODO от Antonio Lupi",
     description: "Унитаз из композитного материала Flumood от фабрики №1",
     image: "/logos/p3.png",
   },
