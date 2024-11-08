@@ -23,15 +23,21 @@ export default function HomePage() {
   const videos = [
     {
       src: "/3-n.mp4",
-      lowQualitySrc: "/preview3.mp4"
+      lowQualitySrc: "/preview3.mp4",
+      title: "Rimadesio logo",
+      description: "Итальянский стиль и качество в каждой детали: элегантные двери, перегородки и системы хранения для вашего интерьера."
     },
     {
       src: "/1-n.mp4",
-      lowQualitySrc: "/preview1.mp4"
+      lowQualitySrc: "/preview1.mp4",
+      title: "Antonio Lupi",
+      description: "Итальянская элитная сантехника: стильные ванны, раковины и аксессуары для уникального и роскошного интерьера"
     },
     {
       src: "/2-n.mp4",
-      lowQualitySrc: "/preview2.mp4"
+      lowQualitySrc: "/preview2.mp4",
+      title: "Zucchetti logo",
+      description: "Итальянская роскошь для вашей ванной: стильные душевые, ванны и смесители, которые создают комфорт и уникальный дизайн"
     }
   ]
 
@@ -176,12 +182,14 @@ export default function HomePage() {
                 priority
               />
               <div className="space-y-4">
-                <h1 className="text-2xl md:text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-white">
-                  Керамогранит и мебель для вашего дома
-                </h1>
-                <p className="mx-auto max-w-[700px] text-sm md:text-base text-gray-300 md:text-xl">
-                  Создайте уютное пространство с нашими качественными материалами и стильной мебелью
-                </p>
+                <div className="transition-opacity duration-500">
+                  <h1 className="text-2xl md:text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-white">
+                    {videos[currentVideo].title}
+                  </h1>
+                  <p className="mx-auto max-w-[700px] text-sm md:text-base text-gray-300 md:text-xl mt-4">
+                    {videos[currentVideo].description}
+                  </p>
+                </div>
               </div>
               <div className="space-x-4 mb-8 md:mb-16">
                 <Button className="bg-white text-black hover:bg-gray-200">
