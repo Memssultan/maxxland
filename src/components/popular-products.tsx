@@ -14,6 +14,7 @@ const popularProducts = [
   {
     id: 2,
     name: "Керамогранит Atalaia Super Blanco DT",
+    description: "Идеальный отделочный материал для полов/стен, каминов и бассейнов",
     image: "/logos/p2.png",
   },
   {
