@@ -27,8 +27,6 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, descriptio
         <CardContent className="flex flex-col items-center text-center p-3 sm:p-4 space-y-2 sm:space-y-3 h-full">
           <motion.div 
             className="bg-primary/10 p-2 rounded-full"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           >
             <Icon size={16} className="text-primary" />
           </motion.div>

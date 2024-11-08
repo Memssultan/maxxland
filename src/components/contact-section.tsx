@@ -80,7 +80,7 @@ export function ContactSection({ onBack }: ContactSectionProps) {
                       <div>
                         <p className="font-medium">г. Астана</p>
                         <p className="text-gray-600 text-sm md:text-base">проспект Мангилик Ел 28</p>
-                        <p className="text-gray-500 text-sm">Show Room MaxxFine</p>
+                        <p className="text-gray-500 text-sm">Showroom MaxxFine</p>
                       </div>
                     </div>
                   </div>
@@ -90,8 +90,8 @@ export function ContactSection({ onBack }: ContactSectionProps) {
                       <span className="text-pink-500 mr-2 text-lg flex-shrink-0">•</span>
                       <div>
                         <p className="font-medium">г. Алматы</p>
-                        <p className="text-gray-600 text-sm md:text-base">Аль-Фараби, 103</p>
-                        <p className="text-gray-500 text-sm">Show Room MaxxFine</p>
+                        <p className="text-gray-600 text-sm md:text-base">проспект Аль-Фараби, 103</p>
+                        <p className="text-gray-500 text-sm">Showroom MaxxFine</p>
                       </div>
                     </div>
                   </div>
@@ -114,7 +114,7 @@ export function ContactSection({ onBack }: ContactSectionProps) {
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-pink-500 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    <span className="font-medium text-sm md:text-base">infomaxxfine.com</span>
+                    <span className="font-medium text-sm md:text-base">infokerama@bk.ru</span>
                   </a>
                 </div>
               </CardContent>
