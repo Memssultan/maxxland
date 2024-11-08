@@ -12,7 +12,7 @@ const BrandsSection: React.FC = () => {
      url: 'https://www.fantini.it/ru-ww'
    }, 
    { 
-     logo: '/logos/cielo.jpg',
+     logo: '/logos/cielo.svg',
      url: 'https://www.ceramicacielo.it/ru',
    },
    { 
@@ -38,7 +38,23 @@ const BrandsSection: React.FC = () => {
    {
     logo: '/logos/rimadesio.jpg',
     url: 'https://www.rimadesio.it/ru/'
-   }
+   },
+   {
+    logo: '/logos/gessi.svg',
+    url: 'https://www.gessi.com/en'
+   },
+   {
+    logo: '/logos/lafabbrica.svg',
+    url: 'https://www.lafabbrica.it/en/'
+   },
+   {
+    logo: '/logos/inalco.svg',
+    url: 'https://www.inalco.global/ru'
+   },
+   {
+    logo: 'logos/mutina.svg',
+    url: 'https://www.mutina.it/en'
+   },
 
  ];
 
