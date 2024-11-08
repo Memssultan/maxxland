@@ -193,7 +193,7 @@ export default function HomePage() {
               </div>
               <div className="space-x-4 mb-8 md:mb-16">
                 <Button className="bg-white text-black hover:bg-gray-200">
-                  Выбрать гарнитур
+                  Записаться на онлайн-консультацию
                 </Button>
               </div>
               
