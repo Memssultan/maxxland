@@ -150,13 +150,7 @@ export default function HomePage() {
     setCurrentVideo(index)
   }
 
-  const handleWhatsAppClick = () => {
-    const phoneNumber = "77717689949";
-    const message = "Здравствуйте! Я хочу записаться на онлайн-консультацию.";
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-    window.open(whatsappUrl, '_blank');
-};
+  
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -231,14 +225,7 @@ export default function HomePage() {
                   </p>
                 </div>
               </div>
-              <div className="space-x-4 mb-8 md:mb-16">
-              <Button 
-              className="bg-white text-black hover:bg-gray-200"
-            onClick={handleWhatsAppClick}
-           >
-               Записаться на онлайн-консультацию
-               </Button>
-              </div>
+              
               
               <div className="flex space-x-2">
                 {videos.map((_, index) => (
