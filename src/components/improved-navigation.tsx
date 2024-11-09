@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { MountainIcon, Menu, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 
 import {
   NavigationMenu,
@@ -43,8 +43,12 @@ export function ImprovedNavigation() {
   return (
     <header className="px-4 lg:px-6 h-14 flex items-center justify-between relative">
       <Link href="/" className="flex items-center justify-center">
-        <MountainIcon className="h-6 w-6 mr-2" />
-        <span className="font-bold text-xl">MaxxFine</span>
+        <div className="flex items-center">
+          <span className="font-bold text-xl">
+            <span className="text-[#FF0000]">MAXX</span>
+            <span>FINE</span>
+          </span>
+        </div>
       </Link>
 
       {/* Desktop Navigation */}
