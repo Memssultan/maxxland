@@ -134,22 +134,24 @@ export function ContactSection({ onBack }: ContactSectionProps) {
             </Card>
           </div>
 
-          {/* 2GIS Maps */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-8 md:mb-12">
-            {/* Астана */}
-            <Card className="p-1">
-              <div className="h-[170px] sm:h-[200px] md:h-[250px] w-full rounded-lg overflow-hidden">
-                <div id="map" className="w-full h-full"></div>
-              </div>
-            </Card>
+         {/* 2GIS Maps */}
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-8 md:mb-12">
+  {/* Астана */}
+  <Card className="p-1">
+    <h3 className="text-lg font-semibold mb-2 px-4 pt-2 text-red-700"> Астана</h3>
+    <div className="h-[170px] sm:h-[200px] md:h-[250px] w-full rounded-lg overflow-hidden">
+      <div id="map" className="w-full h-full"></div>
+    </div>
+  </Card>
 
-            {/* Алматы */}
-            <Card className="p-1">
-              <div className="h-[170px] sm:h-[200px] md:h-[250px] w-full rounded-lg overflow-hidden">
-                <div id="map2" className="w-full h-full"></div>
-              </div>
-            </Card>
-          </div>
+  {/* Алматы */}
+  <Card className="p-1">
+    <h3 className="text-lg font-semibold mb-2 px-4 pt-2 text-red-700"> Алматы</h3>
+    <div className="h-[170px] sm:h-[200px] md:h-[250px] w-full rounded-lg overflow-hidden">
+      <div id="map2" className="w-full h-full"></div>
+    </div>
+  </Card>
+</div>
 
           {/* Мобильные кнопки быстрого доступа */}
           <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 md:hidden">
