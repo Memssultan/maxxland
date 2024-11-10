@@ -118,7 +118,7 @@ const BrandsSection: React.FC = () => {
             >
               {showAll ? (
                 <>
-                  Показать меньше
+                  Скрыть
                   <ChevronUp className="w-4 h-4" />
                 </>
               ) : (
