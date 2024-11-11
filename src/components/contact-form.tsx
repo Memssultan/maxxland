@@ -24,6 +24,8 @@ export function ContactForm() {
     setSuccess(false)
 
     try {
+      console.log('Отправка данных:', formData)
+
       const response = await fetch('/api/leads', {
         method: 'POST',
         headers: {
@@ -35,13 +37,14 @@ export function ContactForm() {
         })
       })
 
+      console.log('Статус ответа:', response.status)
       const data = await response.json()
+      console.log('Ответ сервера:', data)
 
       if (!response.ok) {
         throw new Error(data.error || 'Error submitting form')
       }
 
-      // Очищаем форму при успехе
       setFormData({
         name: '',
         email: '',
@@ -49,15 +52,11 @@ export function ContactForm() {
         message: ''
       })
       setSuccess(true)
+      setTimeout(() => setSuccess(false), 3000)
 
-      // Скрываем сообщение об успехе через 3 секунды
-      setTimeout(() => {
-        setSuccess(false)
-      }, 3000)
-
-    } catch (error) {
-      console.error('Submit error:', error)
-      setError('Произошла ошибка при отправке формы. Пожалуйста, попробуйте позже.')
+    } catch (error: any) {
+      console.error('Детали ошибки:', error)
+      setError(`Ошибка: ${error.message || 'Неизвестная ошибка'}`)
     } finally {
       setIsSubmitting(false)
     }
@@ -139,6 +138,13 @@ export function ContactForm() {
           {isSubmitting ? 'Отправка...' : 'Отправить'}
         </Button>
       </form>
+
+      {/* Отладочная информация */}
+      {process.env.NODE_ENV === 'development' && (
+        <div className="mt-4 p-4 bg-gray-100 rounded text-xs">
+          <p>MongoDB URI: {process.env.MONGODB_URI ? 'Настроен' : 'Не настроен'}</p>
+        </div>
+      )}
     </div>
   )
 }
