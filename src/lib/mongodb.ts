@@ -2,10 +2,15 @@
 import { MongoClient } from 'mongodb'
 
 if (!process.env.MONGODB_URI) {
-  throw new Error('Please add your Mongo URI to .env.local')
+  // В режиме разработки используем фиктивные данные
+  if (process.env.NODE_ENV === 'development') {
+    console.warn('No MONGODB_URI found. Using mock data.')
+  } else {
+    throw new Error('Please add your Mongo URI to environment variables')
+  }
 }
 
-const uri = process.env.MONGODB_URI
+const uri = process.env.MONGODB_URI || ''
 const options = {}
 
 let client
