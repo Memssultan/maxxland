@@ -43,11 +43,24 @@ export function ImprovedNavigation() {
 
   return (
     <header className="px-4 lg:px-6 h-14 flex items-center justify-between fixed top-0 left-0 right-0 bg-white z-50 shadow-sm">
-      <Link href="/" className="flex items-center justify-start py-2 px-4">
-        <span className="text-xs md:text-base text-foreground tracking-wide">
-          Мебель • Керамогранит • Сантехника
-        </span>
-      </Link>
+    <Link href="/" className="flex items-center justify-start gap-6 py-3 px-3">
+      <span className="text-xs md:text-base text-foreground">
+        Мебель
+      </span>
+      <span className="text-xs md:text-base text-foreground">
+        •
+      </span>
+      <span className="text-xs md:text-base text-foreground">
+        Керамогранит
+      </span>
+      <span className="text-xs md:text-base text-foreground">
+        •
+      </span>
+      <span className="text-xs md:text-base text-foreground">
+        Сантехника
+      </span>
+    </Link>
+
 
 
       {/* Desktop Navigation */}
