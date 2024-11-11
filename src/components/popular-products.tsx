@@ -9,25 +9,25 @@ const popularProducts = [
     id: 1,
     name: "Керамогранит Petra Crema Abujardado",
     description: "Идеальный отделочный материал для полов/стен, каминов и бассейнов",
-    image: "/logos/p1.svg",
+    image: "/logos/p1.png",
   },
   {
     id: 2,
     name: "Керамогранит Atalaia Super Blanco DT",
     description: "Идеальный отделочный материал для полов/стен, каминов и бассейнов",
-    image: "/logos/p2.svg",
+    image: "/logos/p2.png",
   },
   {
     id: 3,
     name: "Подвесной унитаз KOMODO от Antonio Lupi",
     description: "Унитаз из композитного материала Flumood от фабрики №1",
-    image: "/logos/p3.svg",
+    image: "/logos/p3.png",
   },
   {
     id: 4,
     name: "Смесители Zuchetti Pan S",
     description: "великолепная коллекция способная органично вписаться в любой современный интерьер",
-    image: "/logos/p4.svg",
+    image: "/logos/p4.png",
   },
 ]
 
