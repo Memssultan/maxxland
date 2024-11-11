@@ -26,19 +26,16 @@ export default function HomePage() {
       src: "/3-n.mp4",
       lowQualitySrc: "/preview3.mp4",
       title: "Rimadesio",
-      
     },
     {
       src: "/1-n.mp4",
       lowQualitySrc: "/preview1.mp4",
       title: "Antonio Lupi",
-      
     },
     {
       src: "/2-n.mp4",
       lowQualitySrc: "/preview2.mp4",
       title: "Zucchetti",
-
     }
   ]
 
@@ -52,15 +49,12 @@ export default function HomePage() {
     const touchEndX = e.changedTouches[0].clientX
     const diffX = touchEndX - touchStartX.current
 
-    // Минимальное расстояние свайпа для переключения (в пикселях)
     const minSwipeDistance = 50
 
     if (Math.abs(diffX) > minSwipeDistance) {
       if (diffX > 0) {
-        // Свайп вправо - предыдущее видео
         setCurrentVideo(prev => (prev - 1 + videos.length) % videos.length)
       } else {
-        // Свайп влево - следующее видео
         setCurrentVideo(prev => (prev + 1) % videos.length)
       }
     }
@@ -79,8 +73,6 @@ export default function HomePage() {
       [index]: true
     }))
   }
-
-  
 
   React.useEffect(() => {
     if (isInitialLoad.current) {
@@ -150,8 +142,6 @@ export default function HomePage() {
     setCurrentVideo(index)
   }
 
-  
-
   return (
     <div className="flex flex-col min-h-screen">
       <ImprovedNavigation />
@@ -207,24 +197,32 @@ export default function HomePage() {
           
           <div className="container px-4 md:px-6 relative z-20">
             <div className="flex flex-col items-center space-y-4 text-center">
-              <Image
-                src="/logo.svg"
-                alt="Логотип компании"
-                width={200}
-                height={100}
-                className="mb-4 md:mb-[-11rem]"
-                priority
-              />
+              <div className="relative flex flex-col items-center">
+                <Image
+                  src="/logo.svg"
+                  alt="Логотип компании"
+                  width={200}
+                  height={100}
+                  className="mb-1"
+                  priority
+                />
+                <div className="flex flex-col items-center -mt-2">
+                  <span className="text-white text-sm md:text-base tracking-widest font-light">
+                    TIMELESS DESIGN
+                  </span>
+                  <div className="w-full h-0.5 bg-white/30 mt-1 max-w-[120px]"></div>
+                </div>
+              </div>
+              
               <div className="space-y-4">
                 <div className="transition-opacity duration-500">
                   <h1 className="text-2xl md:text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-white">
                     {videos[currentVideo].title}
                   </h1>
-                  <p className="mx-auto max-w-[700px] text-sm md:text-base text-gray-300 md:text-xl mt-4"></p>.
-                    
+                  <p className="mx-auto max-w-[700px] text-sm md:text-base text-gray-300 md:text-xl mt-4">
+                  </p>
                 </div>
               </div>
-              
               
               <div className="flex space-x-2">
                 {videos.map((_, index) => (
