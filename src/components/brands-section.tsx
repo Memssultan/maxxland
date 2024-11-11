@@ -9,7 +9,7 @@ const BrandsSection: React.FC = () => {
   
   const brands = [
     { 
-      logo: '/logos/rimadesio.svg',
+      logo: '/logos/rimadesio.jpg',
       url: 'https://www.rimadesio.it/ru/'
     }, 
     {  
@@ -21,11 +21,11 @@ const BrandsSection: React.FC = () => {
       url: 'https://www.inalco.global/ru'
     },
     { 
-      logo: '/logos/antoniolupi.svg',
+      logo: '/logos/antoniolupi.jpeg',
       url: 'https://www.antoniolupi.it/en/'
     },
     { 
-      logo: '/logos/fmg.svg',
+      logo: '/logos/fmg.png',
       url: 'https://www.irisfmg.com/'
     },
     {
@@ -33,19 +33,19 @@ const BrandsSection: React.FC = () => {
       url: 'https://www.gessi.com/en'
     },
     {
-      logo: '/logos/zucchetti.svg',
+      logo: '/logos/zucchetti.jpeg',
       url: 'https://www.zucchettidesign.it/en'
     },
     {
-      logo: '/logos/toto.svg',
+      logo: '/logos/toto.jpeg',
       url: 'https://www.toto.com/en/design/'    
     },
     {
-      logo: '/logos/devon.svg', 
+      logo: '/logos/devon.jpg', 
       url: 'https://www.devon-devon.com/eu/'
     },
     {
-      logo: '/logos/bertocci.svg',
+      logo: '/logos/bertocci.png',
       url: 'https://www.bertocci.it/'
     },
     {
@@ -61,15 +61,15 @@ const BrandsSection: React.FC = () => {
       url: 'https://www.mutina.it/en'
     },
     {
-      logo: '/logos/bossini.svg',
+      logo: '/logos/bossini.jpg',
       url: 'https://www.bossini.it/ru'
     },
     {
-       logo: '/logos/fantini.svg', 
+       logo: '/logos/fantini.png', 
       url: 'https://www.fantini.it/ru-ww'
     },
     {
-      logo: '/logos/DW.svg',
+      logo: '/logos/DW.jpg',
       url: 'https://www.decor-walther.com/ru/'
     }
   ]; 
