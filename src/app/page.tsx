@@ -1,5 +1,6 @@
 'use client'
 
+import { ContactForm } from '@/components/contact-form'
 import * as React from "react"
 import { ImprovedNavigation } from "@/components/improved-navigation"
 import { PopularProducts } from "@/components/popular-products"
@@ -246,6 +247,7 @@ export default function HomePage() {
         <PopularProducts />
         <CustomerReviews />
         <ContactSection />
+        <ContactForm />
       </main>
       
       <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
