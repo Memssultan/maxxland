@@ -1,59 +1,61 @@
 // src/app/api/leads/route.ts
 import { NextResponse } from 'next/server'
 import clientPromise from '@/lib/mongodb'
-import { ObjectId } from 'mongodb'
 
-// GET - получение всех заявок
-export async function GET() {
+export async function POST(request: Request) {
   try {
-    console.log('Fetching leads from MongoDB...')
+    // Подключаемся к MongoDB
     const client = await clientPromise
-    const db = client.db('crm') // Используем базу данных 'crm'
-    
-    const leads = await db
-      .collection('leads')
-      .find({})
-      .sort({ createdAt: -1 }) // Сортировка по дате (новые сверху)
-      .toArray()
-    
-    console.log(`Found ${leads.length} leads`)
-    return NextResponse.json(leads)
+    const db = client.db('crm')
+
+    // Получаем данные из запроса
+    const data = await request.json()
+
+    // Создаем новую заявку
+    const newLead = {
+      ...data,
+      status: 'new',
+      createdAt: new Date(),
+    }
+
+    // Сохраняем в базу данных
+    const result = await db.collection('leads').insertOne(newLead)
+
+    if (!result.insertedId) {
+      throw new Error('Failed to insert lead')
+    }
+
+    // Возвращаем успешный ответ
+    return NextResponse.json({ 
+      success: true, 
+      leadId: result.insertedId 
+    })
+
   } catch (error) {
-    console.error('Database Error:', error)
+    console.error('API Error:', error)
     return NextResponse.json(
-      { error: 'Failed to fetch leads' }, 
+      { error: 'Failed to create lead' }, 
       { status: 500 }
     )
   }
 }
 
-// POST - создание новой заявки
-export async function POST(request: Request) {
+export async function GET() {
   try {
-    console.log('Creating new lead...')
-    const data = await request.json()
     const client = await clientPromise
     const db = client.db('crm')
+    
+    const leads = await db
+      .collection('leads')
+      .find({})
+      .sort({ createdAt: -1 })
+      .toArray()
 
-    const newLead = {
-      ...data,
-      status: 'new',
-      createdAt: new Date(),
-      _id: new ObjectId()
-    }
-
-    const result = await db.collection('leads').insertOne(newLead)
-    console.log('Lead created:', result.insertedId)
-
-    return NextResponse.json({
-      success: true,
-      id: result.insertedId,
-      lead: newLead
-    })
+    return NextResponse.json(leads)
   } catch (error) {
-    console.error('Database Error:', error)
+    console.error('API Error:', error)
     return NextResponse.json(
-      { error: 'Failed to create lead' },
+      { error: 'Failed to fetch leads' }, 
       { status: 500 }
     )
   }

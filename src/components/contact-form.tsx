@@ -21,6 +21,7 @@ export function ContactForm() {
     e.preventDefault()
     setIsSubmitting(true)
     setError('')
+    setSuccess(false)
 
     try {
       const response = await fetch('/api/leads', {
@@ -30,31 +31,33 @@ export function ContactForm() {
         },
         body: JSON.stringify({
           ...formData,
-          source: window.location.href
+          createdAt: new Date().toISOString()
         })
       })
 
+      const data = await response.json()
+
       if (!response.ok) {
-        throw new Error('Failed to submit form')
+        throw new Error(data.error || 'Error submitting form')
       }
 
-      const result = await response.json()
-      
-      if (result.success) {
-        setSuccess(true)
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          message: ''
-        })
-        setTimeout(() => setSuccess(false), 3000)
-      } else {
-        setError('Произошла ошибка при отправке формы')
-      }
+      // Очищаем форму при успехе
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+      })
+      setSuccess(true)
+
+      // Скрываем сообщение об успехе через 3 секунды
+      setTimeout(() => {
+        setSuccess(false)
+      }, 3000)
+
     } catch (error) {
-      console.error('Error:', error)
-      setError('Произошла ошибка при отправке формы')
+      console.error('Submit error:', error)
+      setError('Произошла ошибка при отправке формы. Пожалуйста, попробуйте позже.')
     } finally {
       setIsSubmitting(false)
     }
@@ -63,56 +66,68 @@ export function ContactForm() {
   return (
     <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow">
       <h2 className="text-2xl font-bold mb-6">Оставить заявку</h2>
-      
-      {success && (
-        <div className="mb-4 p-4 bg-green-50 text-green-600 rounded">
-          Заявка успешно отправлена!
-        </div>
-      )}
-      
+
       {error && (
         <div className="mb-4 p-4 bg-red-50 text-red-600 rounded">
           {error}
         </div>
       )}
 
+      {success && (
+        <div className="mb-4 p-4 bg-green-50 text-green-600 rounded">
+          Заявка успешно отправлена!
+        </div>
+      )}
+
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Ваше имя *
+          </label>
           <Input
             type="text"
-            placeholder="Ваше имя"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             required
+            disabled={isSubmitting}
           />
         </div>
 
         <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Email *
+          </label>
           <Input
             type="email"
-            placeholder="Email"
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             required
+            disabled={isSubmitting}
           />
         </div>
 
         <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Телефон *
+          </label>
           <Input
             type="tel"
-            placeholder="Телефон"
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             required
+            disabled={isSubmitting}
           />
         </div>
 
         <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Сообщение
+          </label>
           <Textarea
-            placeholder="Сообщение"
             value={formData.message}
             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
             rows={4}
+            disabled={isSubmitting}
           />
         </div>
 
