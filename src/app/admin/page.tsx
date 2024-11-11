@@ -9,7 +9,7 @@ const ADMIN_USERNAME = 'Memssultan'
 const ADMIN_PASSWORD = '123456'
 
 interface Lead {
-  id: number
+  _id: string
   name: string
   email: string
   phone: string
@@ -26,16 +26,33 @@ export default function AdminPage() {
     password: ''
   })
   const [error, setError] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
-  // Загружаем заявки при монтировании компонента
+  // Функция для загрузки заявок
+  const fetchLeads = async () => {
+    try {
+      setIsLoading(true)
+      const response = await fetch('/api/leads')
+      if (!response.ok) throw new Error('Failed to fetch leads')
+      const data = await response.json()
+      setLeads(data)
+    } catch (error) {
+      console.error('Error fetching leads:', error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  // Загружаем заявки при входе и обновляем каждые 30 секунд
   useEffect(() => {
     if (isLoggedIn) {
-      const storedLeads = JSON.parse(localStorage.getItem('leads') || '[]')
-      setLeads(storedLeads)
+      fetchLeads()
+      const interval = setInterval(fetchLeads, 30000)
+      return () => clearInterval(interval)
     }
   }, [isLoggedIn])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (formData.username === ADMIN_USERNAME && formData.password === ADMIN_PASSWORD) {
       setIsLoggedIn(true)
@@ -45,12 +62,24 @@ export default function AdminPage() {
     }
   }
 
-  const handleStatusChange = (leadId: number, newStatus: Lead['status']) => {
-    const updatedLeads = leads.map(lead => 
-      lead.id === leadId ? { ...lead, status: newStatus } : lead
-    )
-    setLeads(updatedLeads)
-    localStorage.setItem('leads', JSON.stringify(updatedLeads))
+  const handleStatusChange = async (leadId: string, newStatus: Lead['status']) => {
+    try {
+      const response = await fetch(`/api/leads/${leadId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ status: newStatus })
+      })
+
+      if (!response.ok) throw new Error('Failed to update status')
+      
+      // Обновляем список заявок
+      fetchLeads()
+    } catch (error) {
+      console.error('Error updating lead status:', error)
+      alert('Ошибка при обновлении статуса')
+    }
   }
 
   const getStatusColor = (status: Lead['status']) => {
@@ -62,26 +91,58 @@ export default function AdminPage() {
     }
   }
 
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString)
+    return new Intl.DateTimeFormat('ru-RU', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit'
+    }).format(date)
+  }
+
   if (isLoggedIn) {
     return (
       <div className="p-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-between items-center mb-6">
-            <h1 className="text-2xl font-bold">Админ-панель</h1>
-            <Button 
-              onClick={() => {
-                setIsLoggedIn(false)
-                localStorage.removeItem('admin_auth')
-              }}
-            >
-              Выйти
-            </Button>
+            <div>
+              <h1 className="text-2xl font-bold">Админ-панель</h1>
+              {isLoading && <p className="text-sm text-gray-500">Загрузка данных...</p>}
+            </div>
+            <div className="flex gap-4">
+              <Button 
+                onClick={fetchLeads}
+                variant="outline"
+              >
+                Обновить
+              </Button>
+              <Button 
+                onClick={() => {
+                  setIsLoggedIn(false)
+                  localStorage.removeItem('admin_auth')
+                }}
+                variant="destructive"
+              >
+                Выйти
+              </Button>
+            </div>
           </div>
           
           <div className="bg-white shadow rounded-lg p-6">
-            <h2 className="text-xl font-semibold mb-4">Заявки</h2>
+            <h2 className="text-xl font-semibold mb-4">
+              Заявки 
+              {leads.length > 0 && <span className="text-sm text-gray-500 ml-2">({leads.length})</span>}
+            </h2>
             {leads.length === 0 ? (
-              <p className="text-gray-600">Список заявок пока пуст</p>
+              <div className="text-center py-12">
+                {isLoading ? (
+                  <p className="text-gray-500">Загрузка заявок...</p>
+                ) : (
+                  <p className="text-gray-500">Список заявок пока пуст</p>
+                )}
+              </div>
             ) : (
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
@@ -106,9 +167,9 @@ export default function AdminPage() {
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
                     {leads.map((lead) => (
-                      <tr key={lead.id}>
+                      <tr key={lead._id} className="hover:bg-gray-50">
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          {new Date(lead.createdAt).toLocaleString('ru-RU')}
+                          {formatDate(lead.createdAt)}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="font-medium text-gray-900">{lead.name}</div>
@@ -118,12 +179,14 @@ export default function AdminPage() {
                           <div className="text-sm text-gray-500">{lead.phone}</div>
                         </td>
                         <td className="px-6 py-4">
-                          <div className="text-sm text-gray-900">{lead.message}</div>
+                          <div className="text-sm text-gray-900 max-w-md break-words">
+                            {lead.message}
+                          </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <select
                             value={lead.status}
-                            onChange={(e) => handleStatusChange(lead.id, e.target.value as Lead['status'])}
+                            onChange={(e) => handleStatusChange(lead._id, e.target.value as Lead['status'])}
                             className={`text-sm rounded-full px-3 py-1 font-semibold ${getStatusColor(lead.status)}`}
                           >
                             <option value="new">Новая</option>
