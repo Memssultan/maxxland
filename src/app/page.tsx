@@ -1,5 +1,6 @@
 'use client'
 
+import { ContactForm } from '@/components/contact-form'
 import * as React from "react"
 import { ImprovedNavigation } from "@/components/improved-navigation"
 import { PopularProducts } from "@/components/popular-products"

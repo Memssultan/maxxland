@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
-    swcMinify: true
-  }
-  
-  module.exports = nextConfig
+  images: {
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    minimumCacheTTL: 60,
+    unoptimized: true, // Добавляем эту опцию для отключения оптимизации
+  },
+}
+
+module.exports = nextConfig
