@@ -206,23 +206,21 @@ export default function HomePage() {
                   className="mb-1"
                   priority
                 />
-                <div className="flex flex-col items-center -mt-2">
-                  <span className="text-white text-sm md:text-base tracking-widest font-light">
-                    TIMELESS DESIGN
-                  </span>
-                  <div className="w-full h-0.5 bg-white/30 mt-1 max-w-[120px]"></div>
-                </div>
+              
               </div>
               
               <div className="space-y-4">
-                <div className="transition-opacity duration-500">
-                  <h1 className="text-2xl md:text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-white">
-                    {videos[currentVideo].title}
-                  </h1>
-                  <p className="mx-auto max-w-[700px] text-sm md:text-base text-gray-300 md:text-xl mt-4">
-                  </p>
-                </div>
-              </div>
+  <div className="transition-opacity duration-500 flex flex-col items-center">
+    <span className="text-white text-sm md:text-base tracking-widest font-light -translate-y-[220px]">
+      TIMELESS DESIGN
+    </span>
+    <h1 className="text-2xl md:text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-white">
+      {videos[currentVideo].title}
+    </h1>
+    <p className="mx-auto max-w-[700px] text-sm md:text-base text-gray-300 md:text-xl mt-4">
+    </p>
+  </div>
+</div>
               
               <div className="flex space-x-2">
                 {videos.map((_, index) => (
