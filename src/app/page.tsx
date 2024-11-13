@@ -12,6 +12,7 @@ import Image from "next/image"
 import Link from "next/link"
 import FeaturesSection from '@/components/ui/features-section'
 import BrandsSection from '@/components/brands-section'
+import { HeightIcon, WidthIcon } from '@radix-ui/react-icons'
 
 export default function HomePage() {
   const [currentVideo, setCurrentVideo] = React.useState(0)
@@ -26,17 +27,21 @@ export default function HomePage() {
     {
       src: "/3-n.mp4",
       lowQualitySrc: "/preview3.mp4",
-      title: "Rimadesio",
+      logo: "/logos/rima.png",
+      alt: "Rimadesio Logo"
     },
     {
       src: "/1-n.mp4",
       lowQualitySrc: "/preview1.mp4",
-      title: "Antonio Lupi",
+      logo: "/logos/zucchetti.svg",
+      alt: "Zucchetii Logo"
     },
     {
       src: "/2-n.mp4",
       lowQualitySrc: "/preview2.mp4",
-      title: "Zucchetti",
+      logo: "/logos/antoniolupi.svg",
+      alt: "Antonio-Lupi Logo",
+      
     }
   ]
 
@@ -215,9 +220,20 @@ export default function HomePage() {
     <span className="text-white text-sm md:text-base tracking-widest font-light -translate-y-[220px]">
       TIMELESS DESIGN
     </span>
-    <h1 className="text-2xl md:text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-white">
-      {videos[currentVideo].title}
-    </h1>
+    <div className="flex justify-center items-center h-32 w-full">
+      <Image
+        key={currentVideo}
+        src={videos[currentVideo].logo}
+        alt={videos[currentVideo].alt}
+        width={300}
+        height={100}
+        className="object-contain transition-opacity duration-500"
+        priority
+        onError={(e) => {
+          console.error(`Error loading image: ${videos[currentVideo].logo}`);
+        }}
+      />
+    </div>
     <p className="mx-auto max-w-[700px] text-sm md:text-base text-gray-300 md:text-xl mt-4">
     </p>
   </div>
