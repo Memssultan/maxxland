@@ -27,20 +27,18 @@ export default function HomePage() {
     {
       src: "/3-n.mp4",
       lowQualitySrc: "/preview3.mp4",
-      logo: "/logos/rima.png",
-      alt: "Rimadesio Logo"
+      
+      
     },
     {
       src: "/1-n.mp4",
       lowQualitySrc: "/preview1.mp4",
-      logo: "/logos/zucchetti.svg",
-      alt: "Zucchetii Logo"
+     
     },
     {
       src: "/2-n.mp4",
       lowQualitySrc: "/preview2.mp4",
-      logo: "/logos/antoniolupi.svg",
-      alt: "Antonio-Lupi Logo",
+      
       
     }
   ]
@@ -220,20 +218,7 @@ export default function HomePage() {
     <span className="text-white text-sm md:text-base tracking-widest font-light -translate-y-[220px]">
       TIMELESS DESIGN
     </span>
-    <div className="flex justify-center items-center h-32 w-full">
-      <Image
-        key={currentVideo}
-        src={videos[currentVideo].logo}
-        alt={videos[currentVideo].alt}
-        width={300}
-        height={100}
-        className="object-contain transition-opacity duration-500"
-        priority
-        onError={(e) => {
-          console.error(`Error loading image: ${videos[currentVideo].logo}`);
-        }}
-      />
-    </div>
+   
     <p className="mx-auto max-w-[700px] text-sm md:text-base text-gray-300 md:text-xl mt-4">
     </p>
   </div>
