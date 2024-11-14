@@ -5,11 +5,13 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import Script from 'next/script'
 
+
 interface ContactSectionProps {
   onBack?: () => void;
 }
 
 export function ContactSection({ onBack }: ContactSectionProps) {
+  // Эффект для карт
   React.useEffect(() => {
     const initMaps = () => {
       if ((window as any).DG) {
@@ -49,6 +51,8 @@ export function ContactSection({ onBack }: ContactSectionProps) {
       window.removeEventListener('DGScriptReady', initMaps);
     };
   }, []);
+
+ 
 
   return (
     <section className="w-full py-8 md:py-16 lg:py-24 bg-gradient-to-b from-white to-gray-50" id="contacts">
@@ -123,7 +127,7 @@ export function ContactSection({ onBack }: ContactSectionProps) {
                     <span className="font-medium text-sm md:text-base">+7 771 768 9949</span>
                   </a>
 
-                  <a href="mailto:infomaxxfine.com" className="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded-lg transition-colors">
+                  <a href="mailto:infokerama@bk.ru" className="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded-lg transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-red-700 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
@@ -133,6 +137,8 @@ export function ContactSection({ onBack }: ContactSectionProps) {
               </CardContent>
             </Card>
           </div>
+
+      
 
           {/* 2GIS Maps */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-8 md:mb-12">
