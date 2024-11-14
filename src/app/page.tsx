@@ -13,6 +13,7 @@ import Link from "next/link"
 import FeaturesSection from '@/components/ui/features-section'
 import BrandsSection from '@/components/brands-section'
 import { HeightIcon, WidthIcon } from '@radix-ui/react-icons'
+import BitrixForm from '../components/BitrixForm';
 
 export default function HomePage() {
   const [currentVideo, setCurrentVideo] = React.useState(0)
@@ -241,6 +242,7 @@ export default function HomePage() {
         </section>
 
         <FeaturesSection />
+        <BitrixForm />
         <AboutSection />
         <BrandsSection />
         <PopularProducts />
