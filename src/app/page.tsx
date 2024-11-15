@@ -242,8 +242,8 @@ export default function HomePage() {
         </section>
 
         <FeaturesSection />
-        <BitrixForm />
         <AboutSection />
+        <BitrixForm />
         <BrandsSection />
         <PopularProducts />
         <CustomerReviews />
