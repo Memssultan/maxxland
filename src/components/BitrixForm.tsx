@@ -23,5 +23,11 @@ export default function BitrixForm() {
     };
   }, []);
 
-  return <div ref={containerRef} className="w-full"></div>;
+  return (
+    <div ref={containerRef} className="w-full bg-[#F9FAFB] py-8 md:py-12"> {/* Добавили bg-[#F9FAFB] для цвета и отступы */}
+      <div className="container mx-auto px-4 md:px-6">
+        {/* Форма будет здесь */}
+      </div>
+    </div>
+  );
 }
