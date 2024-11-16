@@ -215,17 +215,12 @@ export default function HomePage() {
                   <span className="text-white text-sm md:text-base tracking-widest font-light -translate-y-[220px]">
                     TIMELESS DESIGN
                   </span>
-                  <button 
-                    onClick={() => setIsFormOpen(true)}
-                    className="mt-4 -translate-y-[220px] inline-flex items-center justify-center px-6 py-2 border border-white text-white text-sm hover:bg-white hover:text-black transition-colors duration-200"
-                  >
-                    Подробнее
-                  </button>
                 </div>
               </div>
               
               <div className="flex space-x-2">
                 {videos.map((_, index) => (
+                  
                   <button
                     key={index}
                     onClick={() => handleVideoChange(index)}
@@ -236,6 +231,12 @@ export default function HomePage() {
                   />
                 ))}
               </div>
+              <button 
+                    onClick={() => setIsFormOpen(true)}
+                    className="mt-4 -translate-y-[75px] inline-flex items-center justify-center px-6 py-2 border border-white text-white text-sm hover:bg-white hover:text-black transition-colors duration-200"
+                  >
+                    Подробнее
+                  </button>
             </div>
           </div>
         </section>
