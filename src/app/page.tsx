@@ -13,11 +13,13 @@ import Link from "next/link"
 import FeaturesSection from '@/components/ui/features-section'
 import BrandsSection from '@/components/brands-section'
 import { HeightIcon, WidthIcon } from '@radix-ui/react-icons'
-import BitrixForm from '../components/BitrixForm';
+import BitrixForm from '../components/BitrixForm'
+import { Dialog, DialogContent } from "@/components/ui/dialog"
 
 export default function HomePage() {
   const [currentVideo, setCurrentVideo] = React.useState(0)
   const [loadedVideos, setLoadedVideos] = React.useState<{ [key: number]: boolean }>({})
+  const [isFormOpen, setIsFormOpen] = React.useState(false)
   const videoRefs = React.useRef<HTMLVideoElement[]>([])
   const previewRefs = React.useRef<HTMLVideoElement[]>([])
   const containerRef = React.useRef<HTMLDivElement>(null)
@@ -28,19 +30,14 @@ export default function HomePage() {
     {
       src: "/3-n.mp4",
       lowQualitySrc: "/preview3.mp4",
-      
-      
     },
     {
       src: "/1-n.mp4",
       lowQualitySrc: "/preview1.mp4",
-     
     },
     {
       src: "/2-n.mp4",
       lowQualitySrc: "/preview2.mp4",
-      
-      
     }
   ]
 
@@ -211,19 +208,21 @@ export default function HomePage() {
                   className="mb-1"
                   priority
                 />
-              
               </div>
               
               <div className="space-y-4">
-  <div className="transition-opacity duration-500 flex flex-col items-center">
-    <span className="text-white text-sm md:text-base tracking-widest font-light -translate-y-[220px]">
-      TIMELESS DESIGN
-    </span>
-   
-    <p className="mx-auto max-w-[700px] text-sm md:text-base text-gray-300 md:text-xl mt-4">
-    </p>
-  </div>
-</div>
+                <div className="transition-opacity duration-500 flex flex-col items-center">
+                  <span className="text-white text-sm md:text-base tracking-widest font-light -translate-y-[220px]">
+                    TIMELESS DESIGN
+                  </span>
+                  <button 
+                    onClick={() => setIsFormOpen(true)}
+                    className="mt-4 -translate-y-[220px] inline-flex items-center justify-center px-6 py-2 border border-white text-white text-sm hover:bg-white hover:text-black transition-colors duration-200"
+                  >
+                    Подробнее
+                  </button>
+                </div>
+              </div>
               
               <div className="flex space-x-2">
                 {videos.map((_, index) => (
@@ -241,9 +240,14 @@ export default function HomePage() {
           </div>
         </section>
 
+        <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
+  <DialogContent className="sm:max-w-[800px] max-h-[90vh] overflow-y-auto"> {/* Увеличен размер и добавлен скролл */}
+    <BitrixForm />
+  </DialogContent>
+</Dialog>
+
         <FeaturesSection />
         <AboutSection />
-        <BitrixForm />
         <BrandsSection />
         <PopularProducts />
         <CustomerReviews />
