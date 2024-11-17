@@ -17,27 +17,23 @@ import BitrixForm from '../components/BitrixForm'
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 
 export default function HomePage() {
-  const [currentVideo, setCurrentVideo] = React.useState(0)
-  const [loadedVideos, setLoadedVideos] = React.useState<{ [key: number]: boolean }>({})
+  const [currentSlide, setCurrentSlide] = React.useState(0)
   const [isFormOpen, setIsFormOpen] = React.useState(false)
-  const videoRefs = React.useRef<HTMLVideoElement[]>([])
-  const previewRefs = React.useRef<HTMLVideoElement[]>([])
   const containerRef = React.useRef<HTMLDivElement>(null)
-  const isInitialLoad = React.useRef(true)
   const touchStartX = React.useRef<number | null>(null)
 
-  const videos = [
+  const slides = [
     {
-      src: "/3-n.mp4",
-      lowQualitySrc: "/preview3.mp4",
+      src: "/T1.jpg",
+      alt: "Slide 1"
     },
     {
-      src: "/1-n.mp4",
-      lowQualitySrc: "/preview1.mp4",
+      src: "/T2.jpg",
+      alt: "Slide 2"
     },
     {
-      src: "/2-n.mp4",
-      lowQualitySrc: "/preview2.mp4",
+      src: "/T3.jpg",
+      alt: "Slide 3"
     }
   ]
 
@@ -55,93 +51,25 @@ export default function HomePage() {
 
     if (Math.abs(diffX) > minSwipeDistance) {
       if (diffX > 0) {
-        setCurrentVideo(prev => (prev - 1 + videos.length) % videos.length)
+        setCurrentSlide(prev => (prev - 1 + slides.length) % slides.length)
       } else {
-        setCurrentVideo(prev => (prev + 1) % videos.length)
+        setCurrentSlide(prev => (prev + 1) % slides.length)
       }
     }
 
     touchStartX.current = null
   }
 
-  const isVideoLoaded = (index: number) => {
-    return loadedVideos[index] === true
-  }
-
-  const handleHighQualityLoad = (index: number) => {
-    console.log(`Video ${index} loaded`)
-    setLoadedVideos(prev => ({
-      ...prev,
-      [index]: true
-    }))
-  }
-
-  React.useEffect(() => {
-    if (isInitialLoad.current) {
-      console.log('Initial load - starting to load all videos')
-      videos.forEach((_, index) => {
-        if (videoRefs.current[index]) {
-          videoRefs.current[index].load()
-        }
-      })
-      isInitialLoad.current = false
-    }
-  }, [])
-
-  React.useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          console.log(`Playing video ${currentVideo}, loaded: ${isVideoLoaded(currentVideo)}`)
-          if (isVideoLoaded(currentVideo)) {
-            videoRefs.current[currentVideo]?.play()
-          } else {
-            previewRefs.current[currentVideo]?.play()
-          }
-        } else {
-          videoRefs.current[currentVideo]?.pause()
-          previewRefs.current[currentVideo]?.pause()
-        }
-      },
-      { threshold: 0.5 }
-    )
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current)
-    }
-
-    return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current)
-      }
-    }
-  }, [currentVideo, loadedVideos])
-
   React.useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentVideo(prev => (prev + 1) % videos.length)
+      setCurrentSlide(prev => (prev + 1) % slides.length)
     }, 5000)
 
     return () => clearInterval(interval)
   }, [])
 
-  const handleVideoChange = (index: number) => {
-    console.log(`Switching to video ${index}, loaded: ${isVideoLoaded(index)}`)
-    const currentVideoEl = videoRefs.current[currentVideo]
-    const currentPreviewEl = previewRefs.current[currentVideo]
-    const nextVideoEl = videoRefs.current[index]
-    const nextPreviewEl = previewRefs.current[index]
-    
-    currentVideoEl?.pause()
-    currentPreviewEl?.pause()
-    
-    if (isVideoLoaded(index)) {
-      nextVideoEl?.play()
-    } else {
-      nextPreviewEl?.play()
-    }
-    
-    setCurrentVideo(index)
+  const handleSlideChange = (index: number) => {
+    setCurrentSlide(index)
   }
 
   return (
@@ -154,45 +82,22 @@ export default function HomePage() {
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
-          {videos.map((video, index) => (
-            <React.Fragment key={index}>
-              <video
-                ref={el => {
-                  if (el) {
-                    previewRefs.current[index] = el
-                  }
-                }}
-                src={video.lowQualitySrc}
-                preload="auto"
-                muted
-                loop
-                playsInline
-                onError={(e) => console.error(`Preview video ${index} error:`, e)}
-                className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                  currentVideo === index && !isVideoLoaded(index) ? 'opacity-100' : 'opacity-0'
-                }`}
+          {slides.map((slide, index) => (
+            <div
+              key={index}
+              className={`absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ${
+                currentSlide === index ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <Image
+                src={slide.src}
+                alt={slide.alt}
+                fill
+                className="object-cover"
+                priority={index === 0}
+                quality={90}
               />
-              <video
-                ref={el => {
-                  if (el) {
-                    videoRefs.current[index] = el
-                    if (!isVideoLoaded(index)) {
-                      el.load()
-                    }
-                  }
-                }}
-                src={video.src}
-                preload="auto"
-                muted
-                loop
-                playsInline
-                onLoadedData={() => handleHighQualityLoad(index)}
-                onError={(e) => console.error(`High quality video ${index} error:`, e)}
-                className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                  currentVideo === index && isVideoLoaded(index) ? 'opacity-100' : 'opacity-0'
-                }`}
-              />
-            </React.Fragment>
+            </div>
           ))}
           
           <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-10"></div>
@@ -219,33 +124,32 @@ export default function HomePage() {
               </div>
               
               <div className="flex space-x-2">
-                {videos.map((_, index) => (
-                  
+                {slides.map((_, index) => (
                   <button
                     key={index}
-                    onClick={() => handleVideoChange(index)}
+                    onClick={() => handleSlideChange(index)}
                     className={`w-2 h-2 rounded-full transition-all ${
-                      currentVideo === index ? 'bg-white w-4' : 'bg-white/50'
+                      currentSlide === index ? 'bg-white w-4' : 'bg-white/50'
                     }`}
-                    aria-label={`Switch to video ${index + 1}`}
+                    aria-label={`Switch to slide ${index + 1}`}
                   />
                 ))}
               </div>
               <button 
-                    onClick={() => setIsFormOpen(true)}
-                    className="mt-4 -translate-y-[75px] inline-flex items-center justify-center px-6 py-2 border border-red-700 bg-red-700 text-white text-sm hover:bg-red-800 hover:border-red-800 transition-colors duration-200"
-                  >
-                    Подробнее
-                  </button>
+                onClick={() => setIsFormOpen(true)}
+                className="mt-4 -translate-y-[75px] inline-flex items-center justify-center px-6 py-2 border border-red-700 bg-red-700 text-white text-sm hover:bg-red-800 hover:border-red-800 transition-colors duration-200"
+              >
+                Подробнее
+              </button>
             </div>
           </div>
         </section>
 
         <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
-  <DialogContent className="sm:max-w-[800px] max-h-[90vh] overflow-y-auto">
-    <BitrixForm />
-  </DialogContent>
-</Dialog>
+          <DialogContent className="sm:max-w-[800px] max-h-[90vh] overflow-y-auto">
+            <BitrixForm />
+          </DialogContent>
+        </Dialog>
 
         <FeaturesSection />
         <AboutSection />
