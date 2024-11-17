@@ -123,7 +123,7 @@ export default function HomePage() {
                 </div>
               </div>
               
-              <div className="flex space-x-2">
+              <div className="flex space-x-2 -translate-y-[-150px]">
                 {slides.map((_, index) => (
                   <button
                     key={index}
@@ -135,6 +135,19 @@ export default function HomePage() {
                   />
                 ))}
               </div>
+
+              {/* Логотип Rima */}
+              <div className="relative -translate-y-[40px] mb-4">
+                <Image
+                  src="/logos/rima.PNG"
+                  alt="Rima logo"
+                  width={250}
+                  height={125}
+                  priority
+                />
+              </div>
+              
+              {/* Кнопка Подробнее */}
               <button 
                 onClick={() => setIsFormOpen(true)}
                 className="mt-4 -translate-y-[75px] inline-flex items-center justify-center px-6 py-2 border border-red-700 bg-red-700 text-white text-sm hover:bg-red-800 hover:border-red-800 transition-colors duration-200"
