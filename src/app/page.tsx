@@ -103,8 +103,8 @@ export default function HomePage() {
           <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-10"></div>
           
           <div className="container px-4 md:px-6 relative z-20">
-            <div className="flex flex-col items-center space-y-4 text-center">
-              <div className="relative flex flex-col items-center">
+            <div className="flex flex-col items-center space-y-4 text-center -translate-y-[-10px]">
+              <div className="relative flex flex-col items-center ">
                 <Image
                   src="/logo.svg"
                   alt="Логотип компании"
