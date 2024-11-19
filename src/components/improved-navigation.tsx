@@ -45,13 +45,7 @@ export function ImprovedNavigation() {
     <header className="px-4 lg:px-6 h-14 flex items-center justify-between fixed top-0 left-0 right-0 bg-white z-50 shadow-sm">
       <Link href="/" className="flex items-center justify-start gap-6 py-3 px-3">
         {/* Add Rimadesio Logo */}
-        <Image
-          src="/logos/rimadesio.svg"
-          alt="Rimadesio Logo"
-          width={120}
-          height={30}
-          className="object-contain"
-        />
+       
       </Link>
 
       {/* Desktop Navigation */}
