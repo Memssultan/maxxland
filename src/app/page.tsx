@@ -108,20 +108,19 @@ export default function HomePage() {
                 <Image
                   src="/logo.svg"
                   alt="Логотип компании"
-                  width={200}
-                  height={100}
+                  width={100}
+                  height={80}
                   className="mb-1"
                   priority
                 />
               </div>
-              
               <div className="space-y-4">
-                <div className="transition-opacity duration-500 flex flex-col items-center">
-                  <span className="text-white text-sm md:text-base tracking-widest font-light -translate-y-[220px]">
-                    TIMELESS DESIGN
-                  </span>
-                </div>
-              </div>
+  <div className="transition-opacity duration-500 flex flex-col items-center">
+    <span className="text-white text-[8px] md:text-[10px] tracking-widest font-light -translate-y-[120px]">
+      TIMELESS DESIGN
+    </span>
+  </div>
+</div>
               
               <div className="flex space-x-2 -translate-y-[-150px]">
                 {slides.map((_, index) => (
@@ -137,12 +136,12 @@ export default function HomePage() {
               </div>
 
               {/* Логотип Rima */}
-              <div className="relative -translate-y-[40px] mb-4">
+              <div className="relative -translate-y-[20px] mb-4">
                 <Image
                   src="/logos/rima.PNG"
                   alt="Rima logo"
-                  width={250}
-                  height={125}
+                  width={200}
+                  height={100}
                   priority
                 />
               </div>
@@ -150,7 +149,7 @@ export default function HomePage() {
               {/* Кнопка Подробнее */}
               <button 
                 onClick={() => setIsFormOpen(true)}
-                className="mt-4 -translate-y-[75px] inline-flex items-center justify-center px-6 py-2 border border-red-700 bg-red-700 text-white text-sm hover:bg-red-800 hover:border-red-800 transition-colors duration-200"
+                className="mt-4 -translate-y-[50px] inline-flex items-center justify-center px-6 py-2 border border-red-700 bg-red-700 text-white text-sm hover:bg-red-800 hover:border-red-800 transition-colors duration-200"
               >
                 Подробнее
               </button>
