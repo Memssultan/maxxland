@@ -88,7 +88,7 @@ export function ImprovedNavigation() {
   ]
 
   return (
-    <header className="px-4 lg:px-6 h-14 flex items-center justify-between fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 shadow-sm">
+    <header className="px-4 lg:px-6 h-14 flex items-center justify-between fixed top-0 left-0 right-0 bg-white z-50 shadow-sm">
       <Link href="/" className="flex items-center justify-start gap-6 py-3 px-3">
         {/* Add Logo */}
       </Link>
