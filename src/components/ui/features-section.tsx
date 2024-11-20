@@ -107,8 +107,7 @@ const FeaturesSection: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="flex flex-col items-center mb-6 sm:mb-8"
         >
-         <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-primary mb-2 sm:mb-3 font-stetica">Наши преимущества</h2>
-          <div className="w-12 sm:w-16 h-1 bg-red-700 rounded mb-4 sm:mb-6"></div>
+<h2 className="text-xl sm:text-2xl md:text-3xl text-center text-primary mb-2 sm:mb-3 font-helvoni">Наши преимущества</h2>          <div className="w-12 sm:w-16 h-1 bg-red-700 rounded mb-4 sm:mb-6"></div>
         </motion.div>
         <AnimatePresence>
           <div className="grid grid-cols-2 gap-2 sm:gap-4">

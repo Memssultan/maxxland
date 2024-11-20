@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        stetica: ['Stetica', 'sans-serif'], // Изменено на Stetica
+        helvoni: ['Helvoni', 'sans-serif'], // Изменено на Helvoni
       },
       container: {
         center: true
