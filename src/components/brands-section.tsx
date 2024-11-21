@@ -80,8 +80,8 @@ const BrandsSection: React.FC = () => {
     <section id="brands" className="py-8 sm:py-12 md:py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center mb-8 sm:mb-12">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl text-center text-primary mb-4 font-baskerville-bold">Наши бренды</h2>
-          <p className="text-sm sm:text-base text-muted-foreground text-center max-w-2xl font-baskerville-italic">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl text-center text-primary mb-4 font-slanty">Наши бренды</h2>
+          <p className="text-sm sm:text-base text-muted-foreground text-center max-w-2xl font-slanty">
             Мы тщательно отбираем производителей, чтобы предложить вам лучшее соотношение цены и качества. 
             Работаем напрямую с фабриками, что гарантирует подлинность продукции и лучшие цены.
           </p>
@@ -114,7 +114,7 @@ const BrandsSection: React.FC = () => {
             <Button
               variant="outline"
               onClick={() => setShowAll(!showAll)}
-              className="flex items-center gap-2 font-baskerville-italic"
+              className="flex items-center gap-2 font-slanty"
             >
               {showAll ? (
                 <>

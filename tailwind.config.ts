@@ -10,9 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        baskerville: ['AnyConv.com_LibreBaskerville-Regular', 'serif'],
-        'baskerville-bold': ['AnyConv.com_LibreBaskerville-Bold', 'serif'],
-        'baskerville-italic': ['AnyConv.com_LibreBaskerville-Italic', 'serif'],
+        'slanty': ['SlantyDisplay', 'sans-serif'],
+        'slanty-bold': ['SlantyDisplay-Bold', 'sans-serif'],
       },
       container: {
         center: true

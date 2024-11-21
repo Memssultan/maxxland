@@ -5,27 +5,18 @@
 
 
 @font-face {
-  font-family: 'AnyConv.com_LibreBaskerville-Regular';
-  src: url('/fonts/AnyConv.com_LibreBaskerville-Regular.ttf') format('truetype');
+  font-family: 'SlantyDisplay';
+  src: url('/fonts/SlantyDisplay-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'AnyConv.com_LibreBaskerville-Bold';
-  src: url('/fonts/AnyConv.com_LibreBaskerville-Bold.ttf') format('truetype');
+  font-family: 'SlantyDisplay';
+  src: url('/fonts/SlantyDisplay-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'AnyConv.com_LibreBaskerville-Italic';
-  src: url('/fonts/AnyConv.com_LibreBaskerville-Italic.ttf') format('truetype');
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
 }
 
 
