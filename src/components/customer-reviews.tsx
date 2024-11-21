@@ -31,11 +31,11 @@ const reviews = [
 ]
 
 export function CustomerReviews() {
-  const scrollContainerRef = React.useRef(null)
+  const scrollContainerRef = React.useRef<HTMLDivElement>(null)
   const [scrollPosition, setScrollPosition] = React.useState(0)
   
-  const handleScroll = (e: { target: any }) => {
-    const container = e.target
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const container = e.target as HTMLDivElement
     const scrollPercentage = (container.scrollLeft / (container.scrollWidth - container.clientWidth)) * 100
     setScrollPosition(scrollPercentage)
   }
@@ -43,11 +43,11 @@ export function CustomerReviews() {
   return (
     <section className="w-full py-6 md:py-12 lg:py-20 bg-gray-50">
       <div className="container px-4 md:px-6">
-        <h2 className="text-xl md:text-3xl lg:text-4xl tracking-tighter text-center mb-6 md:mb-12 text-red-700 font-helvoni">
+      <h2 className="text-xl md:text-3xl lg:text-4xl tracking-tighter text-center mb-6 md:mb-12 text-red-700 font-baskerville-bold">
           Отзывы наших клиентов
         </h2>
 
-        {/* Мобильная версия - горизонтальный скролл */}
+        {/* Mobile version */}
         <div className="block md:hidden">
           <div 
             ref={scrollContainerRef}
@@ -68,7 +68,7 @@ export function CustomerReviews() {
                       </AvatarFallback>
                     </Avatar>
                     <div>
-                      <h3 className="text-sm font-helvoni">{review.name}</h3>
+                      <h3 className="text-sm font-baskerville-italic">{review.name}</h3>
                       <div className="flex">
                         {[...Array(5)].map((_, i) => (
                           <Star
@@ -81,8 +81,8 @@ export function CustomerReviews() {
                       </div>
                     </div>
                   </div>
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-4 font-helvoni">{review.review}</p>
-                  <div className="flex items-center text-gray-400 text-xs mt-4 pt-3 border-t font-helvoni">
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-4 font-baskerville-italic">{review.review}</p>
+                  <div className="flex items-center text-gray-400 text-xs mt-4 pt-3 border-t font-baskerville-italic">
                     <Calendar className="w-3 h-3 mr-1.5" />
                     <span>{review.date}</span>
                   </div>
@@ -91,7 +91,7 @@ export function CustomerReviews() {
             ))}
           </div>
           
-          {/* Индикатор прогресса скролла */}
+          {/* Scroll progress indicator */}
           <div className="h-1 bg-gray-200 rounded-full mx-auto max-w-xs mt-2">
             <div 
               className="h-full bg-red-700 rounded-full transition-all duration-300"
@@ -100,7 +100,7 @@ export function CustomerReviews() {
           </div>
         </div>
 
-        {/* Десктопная версия - грид */}
+        {/* Desktop version */}
         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {reviews.map((review) => (
             <Card key={review.id} className="transition-shadow hover:shadow-lg">
@@ -113,7 +113,7 @@ export function CustomerReviews() {
                     </AvatarFallback>
                   </Avatar>
                   <div>
-                    <h3 className="text-base font-helvoni">{review.name}</h3>
+                    <h3 className="text-base font-baskerville-italic">{review.name}</h3>
                     <div className="flex">
                       {[...Array(5)].map((_, i) => (
                         <Star
@@ -126,8 +126,8 @@ export function CustomerReviews() {
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-600 text-base mb-4 font-helvoni">{review.review}</p>
-                <div className="flex items-center text-gray-400 text-sm mt-4 pt-3 border-t font-helvoni">
+                <p className="text-gray-600 text-base mb-4 font-baskerville-italic">{review.review}</p>
+                <div className="flex items-center text-gray-400 text-sm mt-4 pt-3 border-t font-baskerville-italic">
                   <Calendar className="w-4 h-4 mr-2" />
                   <span>{review.date}</span>
                 </div>

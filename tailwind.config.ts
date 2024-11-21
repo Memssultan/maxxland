@@ -10,8 +10,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        slanty: ['SlantyDisplay', 'sans-serif'],
-        helvoni: ['HELVONI', 'sans-serif'], // Add this line
+        baskerville: ['LibreBaskerville', 'serif'],
+        'baskerville-bold': ['LibreBaskerville-Bold', 'serif'],
+        'baskerville-italic': ['LibreBaskerville-Italic', 'serif'],
       },
       container: {
         center: true

@@ -36,8 +36,8 @@ export function PopularProducts() {
     <section className="w-full py-12 md:py-24 lg:py-32">
       <div className="container px-4 md:px-6">
         <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl md:text-3xl tracking-tighter sm:text-4xl md:text-5xl font-helvoni">Популярные товары</h2>
-          <p className="mt-4 text-gray-500 font-helvoni">Эксклюзивная коллекция премиальной сантехники и отделочных материалов</p>
+        <h2 className="text-2xl md:text-3xl tracking-tighter sm:text-4xl md:text-5xl font-baskerville-bold">Популярные товары</h2>
+          <p className="mt-4 text-gray-500 font-baskerville-italic">Эксклюзивная коллекция премиальной сантехники и отделочных материалов</p>
         </div>
         
         {/* Desktop version */}
@@ -54,9 +54,9 @@ export function PopularProducts() {
                 />
               </CardContent>
               <CardFooter className="flex flex-col items-start p-4">
-                <h3 className="text-sm md:text-lg mb-2 font-helvoni">{product.name}</h3>
+                <h3 className="text-sm md:text-lg mb-2 font-baskerville-italic">{product.name}</h3>
                 {product.description && (
-                  <p className="text-sm text-gray-500 font-helvoni">{product.description}</p>
+                  <p className="text-sm text-gray-500 font-baskerville-italic">{product.description}</p>
                 )}
               </CardFooter>
             </Card>
@@ -77,9 +77,9 @@ export function PopularProducts() {
                   />
                 </div>
                 <div className="p-2">
-                  <h3 className="text-xs leading-tight mb-1 font-helvoni">{product.name}</h3>
+                  <h3 className="text-xs leading-tight mb-1 font-baskerville-italic">{product.name}</h3>
                   {product.description && (
-                    <p className="text-xs text-gray-500 font-helvoni">{product.description}</p>
+                    <p className="text-xs text-gray-500 font-baskerville-italic">{product.description}</p>
                   )}
                 </div>
               </CardContent>
