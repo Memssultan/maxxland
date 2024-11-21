@@ -10,7 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        helvoni: ['Helvoni', 'sans-serif'], // Изменено на Helvoni
+        slanty: ['SlantyDisplay', 'sans-serif'],
+        helvoni: ['HELVONI', 'sans-serif'], // Add this line
       },
       container: {
         center: true

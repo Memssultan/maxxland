@@ -104,7 +104,7 @@ export function ImprovedNavigation() {
                   whileTap={{ scale: 0.95 }}
                 >
                   <NavigationMenuLink
-                    className={navigationMenuTriggerStyle()}
+                    className={`${navigationMenuTriggerStyle()} font-helvoni`}
                     onClick={() => scrollToSection(item.id)}
                   >
                     {item.label}
@@ -126,7 +126,7 @@ export function ImprovedNavigation() {
                 >
                   <Button 
                     variant="ghost"
-                    className="hover:bg-gray-100 text-[#25D366] rounded-full px-6 border-none shadow-none font-medium transition-colors duration-300"
+                    className="hover:bg-gray-100 text-[#25D366] rounded-full px-6 border-none shadow-none transition-colors duration-300 font-helvoni"
                   >
                     WhatsApp
                   </Button>
@@ -146,7 +146,7 @@ export function ImprovedNavigation() {
                 >
                   <Button 
                     variant="ghost"
-                    className="hover:bg-gray-100 text-[#E4405F] rounded-full px-6 border-none shadow-none font-medium transition-colors duration-300"
+                    className="hover:bg-gray-100 text-[#E4405F] rounded-full px-6 border-none shadow-none transition-colors duration-300 font-helvoni"
                   >
                     Instagram
                   </Button>
@@ -169,7 +169,7 @@ export function ImprovedNavigation() {
             href="https://2gis.kz/astana/geo/71.4334,51.11087"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center text-sm font-medium text-red-500 hover:text-red-600 transition-colors duration-300"
+            className="flex items-center text-sm text-red-500 hover:text-red-600 transition-colors duration-300 font-helvoni"
           >
             <MapPin className="h-4 w-4 mr-1" />
             Астана
@@ -179,7 +179,7 @@ export function ImprovedNavigation() {
             href="https://2gis.kz/almaty/geo/76.91278,43.20576"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center text-sm font-medium text-red-500 hover:text-red-600 transition-colors duration-300"
+            className="flex items-center text-sm text-red-500 hover:text-red-600 transition-colors duration-300 font-helvoni"
           >
             <MapPin className="h-4 w-4 mr-1" />
             Алматы
@@ -199,7 +199,7 @@ export function ImprovedNavigation() {
             animate={{ rotate: isOpen ? 180 : 0 }}
             transition={{ duration: 0.3 }}
           >
-            {isOpen ? <X /> : <Menu />}
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </motion.div>
         </motion.button>
       </div>
@@ -219,7 +219,7 @@ export function ImprovedNavigation() {
                 <motion.button
                   key={item.id}
                   variants={itemVariants}
-                  className="py-2 text-left hover:bg-gray-100 rounded-md px-3 transition-colors duration-300"
+                  className="py-2 text-left hover:bg-gray-100 rounded-md px-3 transition-colors duration-300 font-helvoni"
                   onClick={() => scrollToSection(item.id)}
                 >
                   {item.label}
@@ -238,7 +238,7 @@ export function ImprovedNavigation() {
                   >
                     <Button 
                       variant="ghost"
-                      className="w-full hover:bg-gray-100 text-[#25D366] flex items-center gap-2 justify-start px-3 transition-colors duration-300"
+                      className="w-full hover:bg-gray-100 text-[#25D366] flex items-center gap-2 justify-start px-3 transition-colors duration-300 font-helvoni"
                     >
                       <svg 
                         viewBox="0 0 24 24" 
@@ -262,7 +262,7 @@ export function ImprovedNavigation() {
                   >
                     <Button 
                       variant="ghost"
-                      className="w-full hover:bg-gray-100 text-pink-500 flex items-center gap-2 justify-start px-3 transition-colors duration-300"
+                      className="w-full hover:bg-gray-100 text-pink-500 flex items-center gap-2 justify-start px-3 transition-colors duration-300 font-helvoni"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/>

@@ -37,19 +37,19 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, descriptio
           <motion.div className="bg-primary/10 p-2 rounded-full">
             <Icon size={16} className="text-primary" />
           </motion.div>
-          <h3 className="font-bold text-sm sm:text-base text-red-700">{title}</h3>
-          <p className="text-xs sm:text-sm text-muted-foreground flex-grow">{description}</p>
+          <h3 className="text-sm sm:text-base text-red-700 font-helvoni">{title}</h3>
+          <p className="text-xs sm:text-sm text-muted-foreground flex-grow font-helvoni">{description}</p>
           <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
-              <Button variant="outline" className="text-red-700 mt-1 sm:mt-2 text-xs sm:text-sm px-2 py-1 h-auto">
+              <Button variant="outline" className="text-red-700 mt-1 sm:mt-2 text-xs sm:text-sm px-2 py-1 h-auto font-helvoni">
                 Подробнее <ChevronRight className="ml-1 h-3 w-3" />
               </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
               <DialogHeader>
-                <DialogTitle>{title}</DialogTitle>
+                <DialogTitle className="font-helvoni">{title}</DialogTitle>
               </DialogHeader>
-              <p className="text-sm">{details}</p>
+              <p className="text-sm font-helvoni">{details}</p>
             </DialogContent>
           </Dialog>
         </CardContent>
@@ -57,6 +57,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, descriptio
     </motion.div>
   );
 };
+
 
 const FeaturesSection: React.FC = () => {
   const features: FeatureCardProps[] = [
@@ -107,7 +108,8 @@ const FeaturesSection: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="flex flex-col items-center mb-6 sm:mb-8"
         >
-<h2 className="text-xl sm:text-2xl md:text-3xl text-center text-primary mb-2 sm:mb-3 font-helvoni">Наши преимущества</h2>          <div className="w-12 sm:w-16 h-1 bg-red-700 rounded mb-4 sm:mb-6"></div>
+          <h2 className="text-xl sm:text-2xl md:text-3xl text-center text-primary mb-2 sm:mb-3 font-helvoni">Наши преимущества</h2>
+          <div className="w-12 sm:w-16 h-1 bg-red-700 rounded mb-4 sm:mb-6"></div>
         </motion.div>
         <AnimatePresence>
           <div className="grid grid-cols-2 gap-2 sm:gap-4">
