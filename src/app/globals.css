@@ -5,18 +5,19 @@
 
 
 @font-face {
-  font-family: 'SlantyDisplay';
-  src: url('/fonts/SlantyDisplay-Regular.ttf') format('truetype');
+  font-family: 'PlayfairDisplay-VariableFont';
+  src: url('/fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SlantyDisplay';
-  src: url('/fonts/SlantyDisplay-Bold.ttf') format('truetype');
+  font-family: 'PlayfairDisplay-Bold';
+  src: url('/fonts/PlayfairDisplay-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
+  font-display: swap;
 }
 
 

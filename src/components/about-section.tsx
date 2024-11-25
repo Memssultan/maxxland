@@ -9,7 +9,7 @@ export function AboutSection() {
   return (
     <section className="w-full py-8 md:py-12 bg-gradient-to-br from-gray-50 to-white" id="about">
       <div className="container mx-auto px-4 md:px-6">
-      <h2 className="text-2xl md:text-3xl mb-6 md:mb-8 text-center text-red-700 font-slanty">
+      <h2 className="text-2xl md:text-3xl mb-6 md:mb-8 text-center text-red-700 font-playfair-bold">
  О компании MaxxFine
 </h2>
         
@@ -17,13 +17,13 @@ export function AboutSection() {
           <TabsList className="grid w-full grid-cols-2 text-red-700 mb-4">
             <TabsTrigger 
               value="about"
-              className="px-2 py-2 text-sm md:text-base data-[state=active]:bg-red-700 data-[state=active]:text-white transition-colors font-slanty"
+              className="px-2 py-2 text-sm md:text-base data-[state=active]:bg-red-700 data-[state=active]:text-white transition-colors font-playfair"
             >
               О нас
             </TabsTrigger>
             <TabsTrigger 
               value="why"
-              className="px-2 py-2 text-sm md:text-base data-[state=active]:bg-red-700 data-[state=active]:text-white transition-colors font-slanty"
+              className="px-2 py-2 text-sm md:text-base data-[state=active]:bg-red-700 data-[state=active]:text-white transition-colors font-playfair"
             >
               Почему мы
             </TabsTrigger>
@@ -37,11 +37,11 @@ export function AboutSection() {
                     <div className="bg-red-50 p-2 md:p-3 rounded-lg">
                       <Building className="h-5 w-5 md:h-6 md:w-6 text-red-700" />
                     </div>
-                    <h3 className="text-lg md:text-xl md:hidden font-slanty">Наша компания</h3>
+                    <h3 className="text-lg md:text-xl md:hidden font-playfair">Наша компания</h3>
                   </div>
                   <div className="flex-1">
-                    <h3 className="hidden md:block text-xl mb-3 font-slanty">Наша компания</h3>
-                    <p className="text-sm md:text-base text-gray-700 font-slanty">
+                    <h3 className="hidden md:block text-xl mb-3 font-playfair">Наша компания</h3>
+                    <p className="text-sm md:text-base text-gray-700 font-playfair">
                       Компания "MaxxFine" - ваш надежный партнер в создании уютного и стильного интерьера. Мы
                       специализируемся на продаже высококачественного керамогранита, а также мебели для ванной и кухни.
                     </p>
@@ -53,11 +53,11 @@ export function AboutSection() {
                     <div className="bg-red-50 p-2 md:p-3 rounded-lg">
                       <Users className="h-5 w-5 md:h-6 md:w-6 text-red-700" />
                     </div>
-                    <h3 className="text-lg md:text-xl md:hidden font-slanty">Наша миссия</h3>
+                    <h3 className="text-lg md:text-xl md:hidden font-playfair">Наша миссия</h3>
                   </div>
                   <div className="flex-1">
-                    <h3 className="hidden md:block text-xl mb-3 font-slanty">Наша миссия</h3>
-                    <p className="text-sm md:text-base text-gray-700 font-slanty">
+                    <h3 className="hidden md:block text-xl mb-3 font-playfair">Наша миссия</h3>
+                    <p className="text-sm md:text-base text-gray-700 font-playfair">
                       Помочь каждому клиенту воплотить в жизнь свои идеи по обустройству дома, предоставляя
                       широкий ассортимент продукции и профессиональную консультацию.
                     </p>
@@ -70,7 +70,7 @@ export function AboutSection() {
           <TabsContent value="why">
             <Card className="border-0 shadow-sm">
               <CardContent className="p-4 md:p-6">
-                <h3 className="text-lg md:text-xl mb-4 md:mb-6 font-slanty">Почему выбирают нас:</h3>
+                <h3 className="text-lg md:text-xl mb-4 md:mb-6 font-playfair">Почему выбирают нас:</h3>
                 <div className="grid gap-3 md:gap-4">
                   {[
                     "Более 5 лет опыта на рынке",
@@ -84,7 +84,7 @@ export function AboutSection() {
                         hover:bg-red-100 transition-colors duration-200"
                     >
                       <CheckCircle className="h-5 w-5 text-red-700 flex-shrink-0" />
-                      <span className="text-sm md:text-base text-gray-700 font-slanty">{item}</span>
+                      <span className="text-sm md:text-base text-gray-700 font-playfair">{item}</span>
                     </div>
                   ))}
                 </div>

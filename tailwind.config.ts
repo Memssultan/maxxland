@@ -10,8 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        'slanty': ['SlantyDisplay', 'sans-serif'],
-        'slanty-bold': ['SlantyDisplay-Bold', 'sans-serif'],
+        'playfair': ['PlayfairDisplay-VariableFont', 'serif'],
+        'playfair-bold': ['PlayfairDisplay-Bold', 'serif'],
       },
       container: {
         center: true

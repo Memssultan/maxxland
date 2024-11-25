@@ -37,19 +37,19 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, descriptio
           <motion.div className="bg-primary/10 p-2 rounded-full">
             <Icon size={16} className="text-primary" />
           </motion.div>
-          <h3 className="text-sm sm:text-base text-red-700 font-SlantyDisplay-Bold">{title}</h3>
-          <p className="text-xs sm:text-sm text-muted-foreground flex-grow font-slanty">{description}</p>
+          <h3 className="text-sm sm:text-base text-red-700 font-playfair">{title}</h3>
+          <p className="text-xs sm:text-sm text-muted-foreground flex-grow font-playfair">{description}</p>
           <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
-              <Button variant="outline" className="text-red-700 mt-1 sm:mt-2 text-xs sm:text-sm px-2 py-1 h-auto font-slanty">
+              <Button variant="outline" className="text-red-700 mt-1 sm:mt-2 text-xs sm:text-sm px-2 py-1 h-auto font-playfair">
                 Подробнее <ChevronRight className="ml-1 h-3 w-3" />
               </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
               <DialogHeader>
-                <DialogTitle className="font-slanty">{title}</DialogTitle>
+                <DialogTitle className="font-playfair">{title}</DialogTitle>
               </DialogHeader>
-              <p className="text-sm font-slanty">{details}</p>
+              <p className="text-sm font-playfair">{details}</p>
             </DialogContent>
           </Dialog>
         </CardContent>
@@ -107,7 +107,7 @@ const FeaturesSection: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="flex flex-col items-center mb-6 sm:mb-8"
         >
-          <h2 className="text-xl sm:text-2xl md:text-3xl text-center text-primary mb-2 sm:mb-3 font-slanty">Наши преимущества</h2>
+          <h2 className="text-xl sm:text-2xl md:text-3xl text-center text-primary mb-2 sm:mb-3 font-playfair-bold">Наши преимущества</h2>
           <div className="w-12 sm:w-16 h-1 bg-red-700 rounded mb-4 sm:mb-6"></div>
         </motion.div>
         <AnimatePresence>
