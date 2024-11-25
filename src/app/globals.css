@@ -5,16 +5,16 @@
 
 
 @font-face {
-  font-family: 'PlayfairDisplay-VariableFont';
-  src: url('/fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+  font-family: 'ZenMaruGothic';
+  src: url('/fonts/ZenMaruGothic-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'PlayfairDisplay-Bold';
-  src: url('/fonts/PlayfairDisplay-Bold.ttf') format('truetype');
+  font-family: 'ZenMaruGothic';
+  src: url('/fonts/ZenMaruGothic-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
   font-display: swap;

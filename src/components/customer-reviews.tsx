@@ -43,7 +43,7 @@ export function CustomerReviews() {
   return (
     <section className="w-full py-6 md:py-12 lg:py-20 bg-gray-50">
       <div className="container px-4 md:px-6">
-      <h2 className="text-xl md:text-3xl lg:text-4xl tracking-tighter text-center mb-6 md:mb-12 text-red-700 font-playfair-bold">Отзывы наших клиентов</h2>
+      <h2 className="text-xl md:text-3xl lg:text-4xl tracking-tighter text-center mb-6 md:mb-12 text-red-700  font-bold">Отзывы наших клиентов</h2>
 
         {/* Mobile version */}
         <div className="block md:hidden">
@@ -66,7 +66,7 @@ export function CustomerReviews() {
                       </AvatarFallback>
                     </Avatar>
                     <div>
-                      <h3 className="text-sm font-playfair">{review.name}</h3>
+                      <h3 className="text-sm  font-sans">{review.name}</h3>
                       <div className="flex">
                         {[...Array(5)].map((_, i) => (
                           <Star
@@ -79,8 +79,8 @@ export function CustomerReviews() {
                       </div>
                     </div>
                   </div>
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-4 font-playfair">{review.review}</p>
-                  <div className="flex items-center text-gray-400 text-xs mt-4 pt-3 border-t font-playfair">
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-4 font-sans">{review.review}</p>
+                  <div className="flex items-center text-gray-400 text-xs mt-4 pt-3 border-t  font-sans">
                     <Calendar className="w-3 h-3 mr-1.5" />
                     <span>{review.date}</span>
                   </div>
@@ -111,7 +111,7 @@ export function CustomerReviews() {
                     </AvatarFallback>
                   </Avatar>
                   <div>
-                    <h3 className="text-base font-playfair">{review.name}</h3>
+                    <h3 className="text-base font-sans">{review.name}</h3>
                     <div className="flex">
                       {[...Array(5)].map((_, i) => (
                         <Star
@@ -124,8 +124,8 @@ export function CustomerReviews() {
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-600 text-base mb-4 font-playfair">{review.review}</p>
-                <div className="flex items-center text-gray-400 text-sm mt-4 pt-3 border-t font-playfair">
+                <p className="text-gray-600 text-base mb-4  font-sans">{review.review}</p>
+                <div className="flex items-center text-gray-400 text-sm mt-4 pt-3 border-t  font-sans">
                   <Calendar className="w-4 h-4 mr-2" />
                   <span>{review.date}</span>
                 </div>

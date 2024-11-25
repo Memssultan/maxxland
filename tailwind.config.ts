@@ -10,8 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        'playfair': ['PlayfairDisplay-VariableFont', 'serif'],
-        'playfair-bold': ['PlayfairDisplay-Bold', 'serif'],
+        'sans': ['ZenMaruGothic', 'sans-serif'],
+      
       },
       container: {
         center: true
