@@ -15,6 +15,9 @@ import BrandsSection from '@/components/brands-section'
 import { HeightIcon, WidthIcon } from '@radix-ui/react-icons'
 import BitrixForm from '../components/BitrixForm'
 import { Dialog, DialogContent } from "@/components/ui/dialog"
+import Head from "next/head";
+
+<Head><link rel="canonical" href="https://maxxfine.kz/" /></Head>
 
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = React.useState(0)
