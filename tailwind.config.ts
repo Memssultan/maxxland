@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['ZenMaruGothic', 'sans-serif'],
+        'playfair': ['Playfair Display', 'serif'],
       
       },
       container: {

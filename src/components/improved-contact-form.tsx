@@ -26,7 +26,7 @@ export function ImprovedContactForm({ onShowContacts }: ImprovedContactFormProps
           </div>
 
           <div className="space-y-2 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-red-700">Свяжитесь с нами</h2>
+            <h2 className="text-2xl md:text-3xl font-playfair tracking-tighter sm:text-4xl md:text-5xl text-red-700">Свяжитесь с нами</h2>
             <p className="max-w-[900px] text-sm md:text-base text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mx-auto">
               У вас есть вопросы? Оставьте свои контактные данные, и мы свяжемся с вами в ближайшее время.
             </p>

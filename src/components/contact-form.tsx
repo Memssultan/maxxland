@@ -64,7 +64,7 @@ export function ContactForm() {
 
   return (
     <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow">
-      <h2 className="text-2xl font-bold mb-6">Оставить заявку</h2>
+      <h2 className="text-2xl font-playfair mb-6">Оставить заявку</h2>
 
       {error && (
         <div className="mb-4 p-4 bg-red-50 text-red-600 rounded">
@@ -80,7 +80,7 @@ export function ContactForm() {
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-playfair text-gray-700 mb-1">
             Ваше имя *
           </label>
           <Input
@@ -93,7 +93,7 @@ export function ContactForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-playfair text-gray-700 mb-1">
             Email *
           </label>
           <Input
@@ -106,7 +106,7 @@ export function ContactForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-playfair text-gray-700 mb-1">
             Телефон *
           </label>
           <Input
@@ -119,7 +119,7 @@ export function ContactForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-playfair text-gray-700 mb-1">
             Сообщение
           </label>
           <Textarea
