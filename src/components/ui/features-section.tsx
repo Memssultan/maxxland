@@ -37,7 +37,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, descriptio
           <motion.div className="bg-primary/10 p-2 rounded-full">
             <Icon size={16} className="text-primary" />
           </motion.div>
-          <h3 className="text-sm sm:text-base text-red-700  font-playfair">{title}</h3>
+          <h3 className="text-sm sm:text-base text-red-700 font-playfair">{title}</h3>
           <p className="text-xs sm:text-sm text-muted-foreground flex-grow font-playfair">{description}</p>
           <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
@@ -49,7 +49,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, descriptio
               <DialogHeader>
                 <DialogTitle className="font-playfair">{title}</DialogTitle>
               </DialogHeader>
-              <p className="text-sm  font-playfair">{details}</p>
+              <p className="text-sm font-playfair">{details}</p>
             </DialogContent>
           </Dialog>
         </CardContent>
@@ -101,12 +101,17 @@ const FeaturesSection: React.FC = () => {
   return (
     <section className="py-6 sm:py-8 md:py-12 px-2 sm:px-4 bg-gradient-to-b from-background to-primary/5">
       <div className="container mx-auto">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col items-center mb-6 sm:mb-8"
+          className="flex flex-col items-center mb-12 sm:mb-16"
         >
+          <p className="text-base sm:text-lg md:text-xl text-center max-w-3xl mb-8 font-playfair text-muted-foreground">
+            Мебель Rimadesio – эффектное сочетание стекла и алюминия. 
+            Это экологически чистые, долговечные и натуральные материалы, которые придают легкости и изысканности интерьеру. 
+            Даже большие системы хранения не смотрятся громоздко, благодаря способности материала пропускать или отражать свет.
+          </p>
           <h2 className="text-xl sm:text-2xl md:text-3xl text-center text-primary mb-2 sm:mb-3 font-playfair">Наши преимущества</h2>
           <div className="w-12 sm:w-16 h-1 bg-red-700 rounded mb-4 sm:mb-6"></div>
         </motion.div>
