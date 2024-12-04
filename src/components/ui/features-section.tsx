@@ -100,14 +100,14 @@ const FeaturesSection: React.FC = () => {
 
   return (
     <section className="py-6 sm:py-8 md:py-12 px-2 sm:px-4 bg-gradient-to-b from-background to-primary/5">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="flex flex-col items-center mb-12 sm:mb-16"
         >
-          <p className="text-base sm:text-lg md:text-xl text-center max-w-3xl mb-8 font-playfair text-muted-foreground">
+          <p className="text-base sm:text-lg md:text-xl text-center max-w-3xl mb-8 font-playfair text-black font-playfair">
             Мебель Rimadesio – эффектное сочетание стекла и алюминия. 
             Это экологически чистые, долговечные и натуральные материалы, которые придают легкости и изысканности интерьеру. 
             Даже большие системы хранения не смотрятся громоздко, благодаря способности материала пропускать или отражать свет.
