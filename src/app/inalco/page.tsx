@@ -10,7 +10,7 @@ import { AboutSection } from "@/components/about-section"
 import { ContactSection } from "@/components/contact-section"
 import Image from "next/image"
 import Link from "next/link"
-import FeaturesSection from '@/components/ui/features-section'
+import FeaturesSection from '@/app/inalco/features-section1'
 import BrandsSection from '@/components/brands-section'
 import { HeightIcon, WidthIcon } from '@radix-ui/react-icons'
 import BitrixForm from '@/components/BitrixForm'
@@ -24,15 +24,15 @@ export default function HomePage() {
 
   const slides = [
     {
-      src: "/T1.jpg",
+      src: "/inalcopage/inalco1.JPG",
       alt: "Slide 1"
     },
     {
-      src: "/T2.jpg",
+      src: "/inalcopage/inalco2.JPG",
       alt: "Slide 2"
     },
     {
-      src: "/T3.jpg",
+      src: "/inalcopage/inalco3.JPG",
       alt: "Slide 3"
     }
   ]
