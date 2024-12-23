@@ -102,28 +102,28 @@ export default function HomePage() {
           
           <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-10"></div>
           
-          <div className="container px-4 md:px-6 relative z-20">
-            <div className="flex flex-col items-center space-y-4 text-center">
-              <div className="relative flex flex-col items-center">
-                <Image
-                  src="/logo.svg"
-                  alt="Логотип компании"
-                  width={200}
-                  height={100}
-                  className="mb-1"
-                  priority
+           <div className="container px-4 md:px-6 relative z-20">
+                      <div className="flex flex-col items-center space-y-4 text-center -translate-y-[10px]">
+                        <div className="relative flex flex-col items-center mt-5">
+                          <Image
+                            src="/logo.svg"
+                            alt="Логотип компании"
+                            width={100}
+                            height={80}
+                            className="mb-1"
+                            priority
                 />
               </div>
               
               <div className="space-y-4">
-                <div className="transition-opacity duration-500 flex flex-col items-center">
-                  <span className="text-white text-sm md:text-base tracking-widest font-light -translate-y-[220px]">
-                    TIMELESS DESIGN
-                  </span>
+  <div className="transition-opacity duration-500 flex flex-col items-center">
+    <span className="text-white text-[8px] md:text-[10px] tracking-widest font-light -translate-y-[120px] ">
+      TIMELESS DESIGN
+    </span>
                 </div>
               </div>
               
-              <div className="flex space-x-2 -translate-y-[-150px]">
+              <div className="flex space-x-2 -translate-y-[-185px]">
                 {slides.map((_, index) => (
                   <button
                     key={index}
@@ -136,24 +136,27 @@ export default function HomePage() {
                 ))}
               </div>
 
-              {/* Логотип Rima */}
-              <div className="relative -translate-y-[40px] mb-4">
-                <Image
-                  src="/logos/rima.PNG"
-                  alt="Rima logo"
-                  width={250}
-                  height={125}
-                  priority
-                />
+              <div className="flex flex-col items-center space-y-6">
+                {/* Логотип Inalco */}
+                <div className="relative -translate-y-[-55px] mb-4">
+                  <Image
+                    src="/inalcopage/inal1.svg"
+                    alt="Inalco logo"
+                    width={200}
+                    height={100}
+                    priority
+                    className="mb-8"
+                  />
+                </div>
+                
+                {/* Кнопка Подробнее */}
+                <button 
+                  onClick={() => setIsFormOpen(true)}
+                 className="mt-4 -translate-y-[-1px] inline-flex items-center justify-center px-6 py-2 border border-red-700 bg-red-700 text-white text-sm hover:bg-red-800 hover:border-red-800 transition-colors duration-200  font-bold"
+                >
+                  Подробнее
+                </button>
               </div>
-              
-              {/* Кнопка Подробнее */}
-              <button 
-                onClick={() => setIsFormOpen(true)}
-                className="mt-4 -translate-y-[75px] inline-flex items-center justify-center px-6 py-2 border border-red-700 bg-red-700 text-white text-sm hover:bg-red-800 hover:border-red-800 transition-colors duration-200"
-              >
-                Подробнее
-              </button>
             </div>
           </div>
         </section>
