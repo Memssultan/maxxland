@@ -10,30 +10,33 @@ import { AboutSection } from "@/components/about-section"
 import { ContactSection } from "@/components/contact-section"
 import Image from "next/image"
 import Link from "next/link"
-import FeaturesSection from '@/components/ui/features-section'
+import FeaturesSection2 from '@/app/fmg/features-section2'
 import BrandsSection from '@/components/brands-section'
 import { HeightIcon, WidthIcon } from '@radix-ui/react-icons'
 import BitrixForm from '@/components/BitrixForm'
 import { Dialog, DialogContent } from "@/components/ui/dialog"
+
+
 
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = React.useState(0)
   const [isFormOpen, setIsFormOpen] = React.useState(false)
   const containerRef = React.useRef<HTMLDivElement>(null)
   const touchStartX = React.useRef<number | null>(null)
+  
 
   const slides = [
     {
-      src: "/T1.jpg",
-      alt: "Slide 1"
+      src: "/fmgpage/fmg1.JPG",
+      alt: "FMG Slide 1"
     },
     {
-      src: "/T2.jpg",
-      alt: "Slide 2"
+      src: "/fmgpage/fmg2.JPG",
+      alt: "FMG Slide 2"
     },
     {
-      src: "/T3.jpg",
-      alt: "Slide 3"
+      src: "/fmgpage/fmg3.PNG",
+      alt: "FMG Slide 3"
     }
   ]
 
@@ -107,7 +110,7 @@ export default function HomePage() {
               <div className="relative flex flex-col items-center">
                 <Image
                   src="/logo.svg"
-                  alt="Логотип компании"
+                  alt="Company Logo"
                   width={200}
                   height={100}
                   className="mb-1"
@@ -136,18 +139,18 @@ export default function HomePage() {
                 ))}
               </div>
 
-              {/* Логотип Rima */}
+              {/* FMG Logo */}
               <div className="relative -translate-y-[40px] mb-4">
                 <Image
-                  src="/logos/rima.PNG"
-                  alt="Rima logo"
+                  src="/logos/fmg.png"
+                  alt="FMG logo"
                   width={250}
                   height={125}
                   priority
                 />
               </div>
               
-              {/* Кнопка Подробнее */}
+              {/* Details Button */}
               <button 
                 onClick={() => setIsFormOpen(true)}
                 className="mt-4 -translate-y-[75px] inline-flex items-center justify-center px-6 py-2 border border-red-700 bg-red-700 text-white text-sm hover:bg-red-800 hover:border-red-800 transition-colors duration-200"
@@ -164,7 +167,7 @@ export default function HomePage() {
           </DialogContent>
         </Dialog>
 
-        <FeaturesSection />
+        <FeaturesSection2 />
         <AboutSection />
         <BrandsSection />
         <PopularProducts />
