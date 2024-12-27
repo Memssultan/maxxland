@@ -108,7 +108,7 @@ const FeaturesSection: React.FC = () => {
           className="flex flex-col items-center mb-12 sm:mb-16"
         >
           <p className="text-base sm:text-lg md:text-xl text-center max-w-3xl mb-8 font-playfair text-black font-playfair">
-            Мебель Rimadesio – эффектное сочетание стекла и алюминия. 
+             Rimadesio – эффектное сочетание стекла и алюминия. 
             Это экологически чистые, долговечные и натуральные материалы, которые придают легкости и изысканности интерьеру. 
             Даже большие системы хранения не смотрятся громоздко, благодаря способности материала пропускать или отражать свет.
           </p>

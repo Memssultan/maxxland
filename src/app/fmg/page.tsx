@@ -105,13 +105,14 @@ export default function HomePage() {
           
           <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-10"></div>
           
+
           <div className="container px-4 md:px-6 relative z-20">
-            <div className="flex flex-col items-center space-y-4 text-center">
-              <div className="relative flex flex-col items-center">
+          <div className="flex flex-col items-center space-y-4 text-center -translate-y-[20px]">
+          <div className="relative flex flex-col items-center mt-5">
                 <Image
                   src="/logo.svg"
                   alt="Company Logo"
-                  width={200}
+                  width={130}
                   height={100}
                   className="mb-1"
                   priority
@@ -120,13 +121,13 @@ export default function HomePage() {
               
               <div className="space-y-4">
                 <div className="transition-opacity duration-500 flex flex-col items-center">
-                  <span className="text-white text-sm md:text-base tracking-widest font-light -translate-y-[220px]">
+                <span className="text-white text-[8px] md:text-[10px] tracking-widest font-light -translate-y-[150px] ">
                     TIMELESS DESIGN
                   </span>
                 </div>
               </div>
               
-              <div className="flex space-x-2 -translate-y-[-150px]">
+              <div className="flex space-x-2 -translate-y-[-230px]">
                 {slides.map((_, index) => (
                   <button
                     key={index}
@@ -139,13 +140,14 @@ export default function HomePage() {
                 ))}
               </div>
 
+              
               {/* FMG Logo */}
-              <div className="relative -translate-y-[40px] mb-4">
+              <div className="relative -translate-y-[-35px] mb-4">
                 <Image
                   src="/logos/fmg.png"
                   alt="FMG logo"
-                  width={250}
-                  height={125}
+                  width={200}
+                  height={100}
                   priority
                 />
               </div>
@@ -153,7 +155,7 @@ export default function HomePage() {
               {/* Details Button */}
               <button 
                 onClick={() => setIsFormOpen(true)}
-                className="mt-4 -translate-y-[75px] inline-flex items-center justify-center px-6 py-2 border border-red-700 bg-red-700 text-white text-sm hover:bg-red-800 hover:border-red-800 transition-colors duration-200"
+                className="mt-4 -translate-y-[5px] inline-flex items-center justify-center px-6 py-2 border border-red-700 bg-red-700 text-white text-sm hover:bg-red-800 hover:border-red-800 transition-colors duration-200"
               >
                 Подробнее
               </button>
